@@ -12,7 +12,7 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 **Konteks:** Mitigasi bencana gunung meletus dan evakuasi mandiri  
 **Tujuan:** Karakter harus mencapai pos evakuasi sebelum tertimpa awan panas!
 
-![Preview Game](./Assets/Misi-1-Merapi/preview.png)
+<!-- ![Preview Game](./Assets/Misi-1-Merapi/preview.png) -->
 
 ---
 
@@ -182,7 +182,7 @@ Action: Text → Set text to "Jangan tinggalkan penduduk!"
 **Konteks:** Kemacetan Jakarta & disiplin berlalu lintas  
 **Tujuan:** Kendalikan lalu lintas agar bus tidak menabrak pengendara liar!
 
-![Preview Game](./Assets/Misi-2-Busway/preview.png)
+<!-- ![Preview Game](./Assets/Misi-2-Busway/preview.png) -->
 
 ---
 
@@ -356,7 +356,7 @@ Action: Motorcycle → Destroy
 **Konteks:** Elektrifikasi desa 3T dengan panel surya  
 **Tujuan:** Putar cermin agar cahaya matahari mengenai panel surya!
 
-![Preview Game](./Assets/Misi-3-Solar/preview.png)
+<!-- ![Preview Game](./Assets/Misi-3-Solar/preview.png) -->
 
 ---
 

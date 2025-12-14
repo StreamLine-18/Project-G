@@ -92,6 +92,20 @@ Semua game dalam hackathon ini mengangkat tema **pelestarian lingkungan**, melip
 
 ---
 
+## 🎨 Sumber Asset Gratis
+
+| Sumber | Deskripsi |
+|--------|-----------|
+| [Kenney.nl](https://kenney.nl/) | Game assets gratis (sprite, tileset, UI) |
+| [Flaticon.com](https://www.flaticon.com/) | Icon dan ilustrasi |
+| [Game-Icons.net](https://Game-Icons.net/) | Icon game gratis |
+| [OpenGameArt.org](https://opengameart.org/) | Asset game open source |
+| [Freesound.org](https://freesound.org/) | Sound effect gratis |
+| [Mixkit.co](https://Mixkit.co/) | Sound effect gratis |
+| [Sfxr.me](https://Sfxr.me/) | Sound effect gratis |
+
+---
+
 ## 📝 Lisensi
 
 Materi hackathon ini dibuat untuk tujuan **edukasi** dan dapat digunakan secara bebas untuk pembelajaran.
