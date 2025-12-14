@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Leaderboard Display</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="display.css">
+</head>
+<body>
+    <div class="display-container">
+        <header>
+            <h1>🎮 Workshop Game Edukasi Lingkungan</h1>
+            <div class="timer-display">
+                <div class="timer" id="timer">03:00:00</div>
+                <div class="timer-status" id="timerStatus">⏸ PAUSED</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="leaderboard">
+                <h2>🏆 Leaderboard</h2>
+                <div class="leaderboard-table">
+                    <div class="table-header">
+                        <span class="rank">Rank</span>
+                        <span class="name">Tim</span>
+                        <span class="mission">Misi</span>
+                        <span class="score">Skor</span>
+                    </div>
+                    <div id="leaderboardBody"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="display.js"></script>
+</body>
+</html>

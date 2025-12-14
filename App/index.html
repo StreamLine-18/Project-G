@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Admin Panel</h1>
+            <p class="subtitle">Buka <a href="display.html" target="_blank">display.html</a> di layar projector</p>
+            
+            <div class="timer-section">
+                <div class="timer" id="timer">03:00:00</div>
+                <div class="timer-status" id="timerStatus">⏸ PAUSED</div>
+                <div class="timer-controls">
+                    <button id="startBtn" onclick="startTimer()">▶ Start</button>
+                    <button id="pauseBtn" onclick="pauseTimer()">⏸ Pause</button>
+                    <button id="resetBtn" onclick="resetTimer()">🔄 Reset</button>
+                    <input type="number" id="hoursInput" placeholder="Jam" min="0" max="12" value="3">
+                    <input type="number" id="minutesInput" placeholder="Menit" min="0" max="59" value="0">
+                    <button onclick="setTimer()">Set Timer</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="add-team">
+                <h2>➕ Tambah/Update Tim</h2>
+                <form id="teamForm" onsubmit="addOrUpdateTeam(event)">
+                    <input type="text" id="teamName" placeholder="Nama Tim" required>
+                    <input type="number" id="teamScore" placeholder="Skor" min="0" value="0">
+                    <select id="teamMission">
+                        <option value="Misi 1">🌊 Misi 1: Siaga Banjir</option>
+                        <option value="Misi 2">🔥 Misi 2: Patroli Hutan</option>
+                        <option value="Misi 3">♻️ Misi 3: Pilah Sampah</option>
+                    </select>
+                    <button type="submit">💾 Simpan</button>
+                </form>
+            </section>
+
+            <section class="leaderboard">
+                <h2>🏆 Leaderboard</h2>
+                <div class="leaderboard-table">
+                    <div class="table-header">
+                        <span class="rank">Rank</span>
+                        <span class="name">Tim</span>
+                        <span class="mission">Misi</span>
+                        <span class="score">Skor</span>
+                        <span class="actions">Aksi</span>
+                    </div>
+                    <div id="leaderboardBody"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <button onclick="clearAllTeams()" class="danger">🗑️ Hapus Semua Data</button>
+            <button onclick="exportData()">📥 Export Data</button>
+        </footer>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

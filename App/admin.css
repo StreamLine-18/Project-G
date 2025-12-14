@@ -1,0 +1,51 @@
+.subtitle {
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.subtitle a {
+    color: #00ff88;
+    text-decoration: none;
+}
+
+.subtitle a:hover {
+    text-decoration: underline;
+}
+
+.timer-status {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #888;
+}
+
+.timer-status.running {
+    color: #00ff88;
+}
+
+.quick-points {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.quick-points button {
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.btn-add { background: #00ff88; color: #1a1a2e; }
+.btn-sub { background: #ffaa00; color: #1a1a2e; }
+.btn-del { background: #ff4444; color: white; }
+
+.score-input {
+    width: 60px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    background: #1a1a40;
+    color: white;
+}

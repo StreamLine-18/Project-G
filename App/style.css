@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    color: #fff;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.timer-section {
+    background: linear-gradient(145deg, #0f3460, #1a1a40);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.timer {
+    font-size: 5rem;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    color: #00ff88;
+    text-shadow: 0 0 20px rgba(0,255,136,0.5);
+    margin-bottom: 20px;
+}
+
+.timer.warning { color: #ffaa00; text-shadow: 0 0 20px rgba(255,170,0,0.5); }
+.timer.danger { color: #ff4444; text-shadow: 0 0 20px rgba(255,68,68,0.5); animation: pulse 1s infinite; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.timer-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.timer-controls button, .timer-controls input {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.timer-controls button {
+    background: linear-gradient(145deg, #e94560, #c73e54);
+    color: white;
+}
+
+.timer-controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(233,69,96,0.4);
+}
+
+.timer-controls input {
+    width: 80px;
+    text-align: center;
+    background: #1a1a40;
+    color: white;
+    border: 2px solid #0f3460;
+}
+
+
+.add-team, .leaderboard {
+    background: linear-gradient(145deg, #0f3460, #1a1a40);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+#teamForm {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#teamForm input, #teamForm select, #teamForm button {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#teamForm input, #teamForm select {
+    background: #1a1a40;
+    color: white;
+    border: 2px solid #0f3460;
+    flex: 1;
+    min-width: 150px;
+}
+
+#teamForm button {
+    background: linear-gradient(145deg, #00ff88, #00cc6a);
+    color: #1a1a2e;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.table-header, .team-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 150px 100px 120px;
+    gap: 10px;
+    padding: 15px;
+    align-items: center;
+}
+
+.table-header {
+    background: #0f3460;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.team-row {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    transition: transform 0.2s;
+}
+
+.team-row:hover { transform: translateX(5px); }
+.team-row.gold { background: linear-gradient(90deg, rgba(255,215,0,0.3), transparent); }
+.team-row.silver { background: linear-gradient(90deg, rgba(192,192,192,0.3), transparent); }
+.team-row.bronze { background: linear-gradient(90deg, rgba(205,127,50,0.3), transparent); }
+
+.rank { font-size: 1.5rem; font-weight: bold; }
+.score { font-size: 1.3rem; font-weight: bold; color: #00ff88; }
+
+.team-row button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 2px;
+    font-size: 0.9rem;
+}
+
+.btn-add { background: #00ff88; color: #1a1a2e; }
+.btn-sub { background: #ffaa00; color: #1a1a2e; }
+.btn-del { background: #ff4444; color: white; }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+footer button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    background: #0f3460;
+    color: white;
+}
+
+footer button.danger { background: #ff4444; }
+
+@media (max-width: 768px) {
+    .timer { font-size: 3rem; }
+    .table-header, .team-row {
+        grid-template-columns: 40px 1fr 80px 60px;
+    }
+    .mission { display: none; }
+}
