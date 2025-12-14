@@ -1,6 +1,6 @@
-# 🎮 Workshop Pembuatan Game - Edukasi Lingkungan
+# 🎮 One-Day Hackathon: Build It. Level Up. Own the Stage!
 
-Selamat datang di repository **Workshop Pembuatan Game Edukasi Lingkungan**! 🌍
+Selamat datang di repository **One-Day Hackathon**! 🚀
 
 Repository ini berisi materi pembelajaran untuk membuat game bertema lingkungan dengan berbagai tingkat kesulitan.
 
@@ -11,7 +11,7 @@ Repository ini berisi materi pembelajaran untuk membuat game bertema lingkungan 
 | Level | Platform | Folder | Target Peserta |
 |-------|----------|--------|----------------|
 | 🟢 **Beginner** | Scratch | [📂 Scratch/](./Scratch/) | SD Kelas 4-6 / SMP |
-| 🟡 **Intermediate** | Construct 2/3 | [📂 Constrruct 2/](./Constrruct%202/) | SMP / SMA |
+| 🟡 **Intermediate** | Construct 2/3 | [📂 Construct 2/](./Construct%202/) | SMP / SMA |
 
 ---
 
@@ -45,28 +45,32 @@ Repository ini berisi materi pembelajaran untuk membuat game bertema lingkungan 
 - Game deployment dan export
 
 #### 🔗 Mulai Tutorial
-👉 **[Buka Tutorial Construct](./Construct%202/Readme.md)** *(Coming Soon)*
+👉 **[Buka Tutorial Construct](./Construct%202/Readme.md)**
 
 ---
 
 ## 📁 Struktur Repository
 
 ```
-📦 GameDev
+📦 One-Day Hackathon
 ├── 📂 Scratch/              # Tutorial untuk Beginner
 │   ├── Readme.md           # Dokumentasi lengkap
 │   └── Assets/             # Sprite, background, sound (jika ada)
 │
-└── 📂 Construct 2/         # Tutorial untuk Intermediate
-    ├── Readme.md           # Dokumentasi lengkap
-    └── Assets/             # File project dan asset
+├── 📂 Construct 2/         # Tutorial untuk Intermediate
+│   ├── Readme.md           # Dokumentasi lengkap
+│   └── Assets/             # File project dan asset
+│
+└── 📂 App/                 # Aplikasi Timer & Leaderboard
+    ├── index.html          # Admin panel
+    └── display.html        # Display untuk proyektor
 ```
 
 ---
 
 ## 🎯 Tema Game: Edukasi Lingkungan
 
-Semua game dalam workshop ini mengangkat tema **pelestarian lingkungan**, meliputi:
+Semua game dalam hackathon ini mengangkat tema **pelestarian lingkungan**, meliputi:
 
 | 🌊 Banjir | 🔥 Kebakaran Hutan | ♻️ Pengelolaan Sampah |
 |-----------|-------------------|----------------------|
@@ -74,7 +78,7 @@ Semua game dalam workshop ini mengangkat tema **pelestarian lingkungan**, melipu
 
 ---
 
-## 🛠️ Persiapan Sebelum Workshop
+## 🛠️ Persiapan Sebelum Hackathon
 
 ### Untuk Level Beginner (Scratch)
 1. ✅ Buka [Scratch Editor](https://scratch.mit.edu/projects/editor/)
@@ -90,8 +94,8 @@ Semua game dalam workshop ini mengangkat tema **pelestarian lingkungan**, melipu
 
 ## 📝 Lisensi
 
-Materi workshop ini dibuat untuk tujuan **edukasi** dan dapat digunakan secara bebas untuk pembelajaran.
+Materi hackathon ini dibuat untuk tujuan **edukasi** dan dapat digunakan secara bebas untuk pembelajaran.
 
 ---
 
-**Selamat Belajar! 🎮🌱**
+**Build It. Level Up. Own the Stage! 🎮🔥**

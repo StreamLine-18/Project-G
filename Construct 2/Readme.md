@@ -1,4 +1,6 @@
-# 🎮 Tutorial Game Construct 2 - Edukasi Lingkungan
+# 🎮 One-Day Hackathon: Build It. Level Up. Own the Stage!
+
+## Tutorial Game Construct 2 - Edukasi Lingkungan
 
 Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia menggunakan Construct 2.
 
@@ -579,7 +581,7 @@ Action: System → Go to layout "Level_Papua"
 
 ---
 
-## 🏆 Kriteria Penilaian Workshop
+## 🏆 Kriteria Penilaian Hackathon
 
 | Aspek | Bobot | Kriteria |
 |-------|-------|----------|
@@ -590,4 +592,4 @@ Action: System → Go to layout "Level_Papua"
 
 ---
 
-**Selamat Berkarya! 🎮🇮🇩**
+**Build It. Level Up. Own the Stage! 🎮🔥**

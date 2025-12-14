@@ -1,4 +1,6 @@
-# 🎮 Tutorial Game Scratch - Edukasi Lingkungan
+# 🎮 One-Day Hackathon: Build It. Level Up. Own the Stage!
+
+## Tutorial Game Scratch - Edukasi Lingkungan
 
 Kumpulan tutorial membuat game sederhana dengan tema lingkungan menggunakan Scratch.
 
@@ -53,6 +55,7 @@ Selamanya:
     Pergi ke x: 240 y: -120 (Pojok Kanan Bawah)
     Meluncur 2 detik ke x: -240 y: -120 (Pojok Kiri Bawah)
 ```
+
 
 ### ☠️ Langkah 5: Game Over
 
@@ -121,6 +124,7 @@ Selamanya:
     Tunggu 1 detik
 ```
 
+
 ### 💧 Langkah 4: Memadamkan Api
 
 Masukan kode ini di **Sprite Api**:
@@ -176,6 +180,7 @@ Selamanya:
 - Pilih **Sprite Tong Anorganik** (Warna Kuning)
 - Pilih **Sprite Sampah Organik** (Contoh: Apel, Daun, Tulang)
 - Pilih **Sprite Sampah Anorganik** (Contoh: Botol Plastik, Kaleng, Kertas)
+
 
 ### 🗑️ Langkah 2: Menggerakkan Tong Sampah
 
@@ -236,6 +241,7 @@ Selamanya:
         Ubah [Nyawa] sebesar -1
         Pergi ke x: (Pilih acak -200 hingga 200) y: 180
 ```
+
 
 Masukan kode ini di **Sprite Sampah Anorganik** (Botol, Kaleng):
 
@@ -306,3 +312,7 @@ Selamanya:
 | Misi 1 | Tambahkan power-up "Perahu" yang membuat karakter kebal 5 detik |
 | Misi 2 | Buat api muncul lebih cepat setiap 10 skor |
 | Misi 3 | Tambahkan jenis sampah ke-3: **B3 (Bahan Berbahaya)** dengan tong merah |
+
+---
+
+**Build It. Level Up. Own the Stage! 🎮🔥**

@@ -1,25 +1,26 @@
 .subtitle {
-    color: #888;
+    color: var(--text-secondary, #a0aec0);
     margin-bottom: 20px;
 }
 
 .subtitle a {
-    color: #00ff88;
+    color: var(--accent-teal, #00b4d8);
     text-decoration: none;
 }
 
 .subtitle a:hover {
     text-decoration: underline;
+    color: var(--accent-yellow, #ffc107);
 }
 
 .timer-status {
     font-size: 1.2rem;
     margin-bottom: 15px;
-    color: #888;
+    color: var(--text-secondary, #a0aec0);
 }
 
 .timer-status.running {
-    color: #00ff88;
+    color: var(--accent-teal, #00b4d8);
 }
 
 .quick-points {
@@ -34,11 +35,16 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.85rem;
+    transition: transform 0.2s;
 }
 
-.btn-add { background: #00ff88; color: #1a1a2e; }
-.btn-sub { background: #ffaa00; color: #1a1a2e; }
-.btn-del { background: #ff4444; color: white; }
+.quick-points button:hover {
+    transform: scale(1.05);
+}
+
+.btn-add { background: var(--accent-teal, #00b4d8); color: var(--bg-primary, #0a1628); }
+.btn-sub { background: var(--accent-yellow, #ffc107); color: var(--bg-primary, #0a1628); }
+.btn-del { background: var(--accent-red, #e63946); color: white; }
 
 .score-input {
     width: 60px;
@@ -46,6 +52,12 @@
     border: none;
     border-radius: 5px;
     text-align: center;
-    background: #1a1a40;
+    background: var(--bg-secondary, #0d1f3c);
     color: white;
+    border: 1px solid var(--bg-card, #0f2847);
+}
+
+.score-input:focus {
+    outline: none;
+    border-color: var(--accent-teal, #00b4d8);
 }

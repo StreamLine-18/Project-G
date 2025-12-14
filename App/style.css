@@ -4,11 +4,23 @@
     box-sizing: border-box;
 }
 
+:root {
+    --bg-primary: #0a1628;
+    --bg-secondary: #0d1f3c;
+    --bg-card: #0f2847;
+    --accent-orange: #ff6b35;
+    --accent-red: #e63946;
+    --accent-yellow: #ffc107;
+    --accent-teal: #00b4d8;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     min-height: 100vh;
-    color: #fff;
+    color: var(--text-primary);
 }
 
 .container {
@@ -25,27 +37,32 @@ header {
 h1 {
     font-size: 2rem;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    background: linear-gradient(90deg, var(--accent-orange), var(--accent-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
 }
 
 .timer-section {
-    background: linear-gradient(145deg, #0f3460, #1a1a40);
+    background: linear-gradient(145deg, var(--bg-card), var(--bg-secondary));
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border: 1px solid rgba(0, 180, 216, 0.2);
 }
 
 .timer {
     font-size: 5rem;
     font-weight: bold;
     font-family: 'Courier New', monospace;
-    color: #00ff88;
-    text-shadow: 0 0 20px rgba(0,255,136,0.5);
+    color: var(--accent-teal);
+    text-shadow: 0 0 20px rgba(0, 180, 216, 0.5);
     margin-bottom: 20px;
 }
 
-.timer.warning { color: #ffaa00; text-shadow: 0 0 20px rgba(255,170,0,0.5); }
-.timer.danger { color: #ff4444; text-shadow: 0 0 20px rgba(255,68,68,0.5); animation: pulse 1s infinite; }
+.timer.warning { color: var(--accent-yellow); text-shadow: 0 0 20px rgba(255, 193, 7, 0.5); }
+.timer.danger { color: var(--accent-red); text-shadow: 0 0 20px rgba(230, 57, 70, 0.5); animation: pulse 1s infinite; }
 
 @keyframes pulse {
     0%, 100% { opacity: 1; }
@@ -69,35 +86,36 @@ h1 {
 }
 
 .timer-controls button {
-    background: linear-gradient(145deg, #e94560, #c73e54);
+    background: linear-gradient(145deg, var(--accent-orange), var(--accent-red));
     color: white;
 }
 
 .timer-controls button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(233,69,96,0.4);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
 }
 
 .timer-controls input {
     width: 80px;
     text-align: center;
-    background: #1a1a40;
+    background: var(--bg-secondary);
     color: white;
-    border: 2px solid #0f3460;
+    border: 2px solid var(--bg-card);
 }
 
-
 .add-team, .leaderboard {
-    background: linear-gradient(145deg, #0f3460, #1a1a40);
+    background: linear-gradient(145deg, var(--bg-card), var(--bg-secondary));
     border-radius: 20px;
     padding: 25px;
     margin-bottom: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border: 1px solid rgba(0, 180, 216, 0.2);
 }
 
 h2 {
     margin-bottom: 20px;
     font-size: 1.3rem;
+    color: var(--accent-yellow);
 }
 
 #teamForm {
@@ -114,18 +132,23 @@ h2 {
 }
 
 #teamForm input, #teamForm select {
-    background: #1a1a40;
+    background: var(--bg-secondary);
     color: white;
-    border: 2px solid #0f3460;
+    border: 2px solid var(--bg-card);
     flex: 1;
     min-width: 150px;
 }
 
 #teamForm button {
-    background: linear-gradient(145deg, #00ff88, #00cc6a);
-    color: #1a1a2e;
+    background: linear-gradient(145deg, var(--accent-orange), var(--accent-red));
+    color: white;
     font-weight: bold;
     cursor: pointer;
+}
+
+#teamForm button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
 }
 
 .table-header, .team-row {
@@ -137,26 +160,41 @@ h2 {
 }
 
 .table-header {
-    background: #0f3460;
+    background: var(--bg-card);
     border-radius: 10px;
     font-weight: bold;
     margin-bottom: 10px;
+    border-left: 4px solid var(--accent-orange);
 }
 
 .team-row {
-    background: rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.03);
     border-radius: 10px;
     margin-bottom: 8px;
     transition: transform 0.2s;
+    border-left: 4px solid transparent;
 }
 
-.team-row:hover { transform: translateX(5px); }
-.team-row.gold { background: linear-gradient(90deg, rgba(255,215,0,0.3), transparent); }
-.team-row.silver { background: linear-gradient(90deg, rgba(192,192,192,0.3), transparent); }
-.team-row.bronze { background: linear-gradient(90deg, rgba(205,127,50,0.3), transparent); }
+.team-row:hover { 
+    transform: translateX(5px); 
+    border-left-color: var(--accent-teal);
+}
+
+.team-row.gold { 
+    background: linear-gradient(90deg, rgba(255,193,7,0.2), transparent); 
+    border-left-color: var(--accent-yellow);
+}
+.team-row.silver { 
+    background: linear-gradient(90deg, rgba(192,192,192,0.2), transparent); 
+    border-left-color: #c0c0c0;
+}
+.team-row.bronze { 
+    background: linear-gradient(90deg, rgba(205,127,50,0.2), transparent); 
+    border-left-color: #cd7f32;
+}
 
 .rank { font-size: 1.5rem; font-weight: bold; }
-.score { font-size: 1.3rem; font-weight: bold; color: #00ff88; }
+.score { font-size: 1.3rem; font-weight: bold; color: var(--accent-teal); }
 
 .team-row button {
     padding: 5px 10px;
@@ -167,9 +205,9 @@ h2 {
     font-size: 0.9rem;
 }
 
-.btn-add { background: #00ff88; color: #1a1a2e; }
-.btn-sub { background: #ffaa00; color: #1a1a2e; }
-.btn-del { background: #ff4444; color: white; }
+.btn-add { background: var(--accent-teal); color: var(--bg-primary); }
+.btn-sub { background: var(--accent-yellow); color: var(--bg-primary); }
+.btn-del { background: var(--accent-red); color: white; }
 
 footer {
     text-align: center;
@@ -185,11 +223,20 @@ footer button {
     border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
-    background: #0f3460;
+    background: var(--bg-card);
     color: white;
+    border: 1px solid rgba(0, 180, 216, 0.3);
 }
 
-footer button.danger { background: #ff4444; }
+footer button:hover {
+    background: var(--bg-secondary);
+    border-color: var(--accent-teal);
+}
+
+footer button.danger { 
+    background: var(--accent-red); 
+    border-color: var(--accent-red);
+}
 
 @media (max-width: 768px) {
     .timer { font-size: 3rem; }
