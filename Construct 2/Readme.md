@@ -11,6 +11,7 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 | Istilah | Arti |
 |---------|------|
 | **Sprite** | Gambar/objek yang bisa bergerak di game |
+| **Tilemap** | Objek untuk menggambar level dari tile/kotak-kotak kecil |
 | **Layout** | Halaman atau layar game (seperti level) |
 | **Behavior** | Perilaku otomatis yang ditambahkan ke objek |
 | **Event Sheet** | Tempat menulis logika/aturan game |
@@ -21,11 +22,11 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
 ---
 
-## 🏔️ Misi 1: Ekspedisi Gunung Merapi
+## �️ Misi 1: Petualangan Hutan Kalimantan
 
 **Jenis Game:** Platformer (lompat-lompatan)  
-**Tema:** Evakuasi bencana gunung meletus  
-**Tujuan:** Karakter harus sampai ke pos evakuasi sebelum tertimpa awan panas!
+**Tema:** Menjelajahi hutan dan menghindari kebakaran  
+**Tujuan:** Karakter harus sampai ke pos aman sebelum terjebak api hutan!
 
 ---
 
@@ -35,13 +36,13 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
 ![new-project-menu](./Assets/screenshots/new-project.png)
 
-2. Atur ukuran layar (**Layout Size**): Misal **1280 x 720**
+2. Atur ukuran layar (**Layout Size**): **1280 x 720**
    - Klik pada **Layout 1** di panel Projects (kanan)
    - Lihat panel **Properties** (kiri), cari **Layout Size**
 
 ![layout-size-properties](./Assets/screenshots/layout-size.png)
 
-3. Tambahkan gambar latar belakang (gunung berapi)
+3. Tambahkan gambar latar belakang (hutan/forest)
 4. Buat **Layer** baru untuk tampilan skor dan timer
    - Klik tab **Layers** di panel kanan
    - Klik icon **+** untuk tambah layer baru
@@ -72,29 +73,34 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
    > *Behavior "Platform" membuat karakter bisa jalan dan lompat otomatis*
 
-#### B. Buat Tanah/Pijakan
+#### B. Buat Tanah dengan Tilemap
 
-1. **Insert New Object** → **Tiled Background** → beri nama `Ground`
+1. **Insert New Object** → **Tilemap** → beri nama `Ground`
 
-![select-tiled-background](./Assets/screenshots/select-tiled-background.png)
+![select-tilemap](./Assets/screenshots/select-tilemap.png)
 
-2. Klik kanan → **Behaviors** → **Add** → pilih **Solid**
+2. Double-click Tilemap untuk buka **Tilemap Editor**
+3. Load tileset gambar (klik folder icon) - gunakan tileset tanah/rumput
+4. Gambar platform dengan klik dan drag di layout
+
+![tilemap-editor](./Assets/screenshots/tilemap-editor.png)
+
+5. Klik kanan pada `Ground` → **Behaviors** → **Add** → pilih **Solid**
    > *Behavior "Solid" membuat objek tidak bisa ditembus*
 
-#### C. Buat Pos Evakuasi (Garis Finish)
+#### C. Buat Pos Aman (Garis Finish)
 
 1. **Insert New Object** → **Sprite** → beri nama `SafeZone`
 2. Letakkan di ujung kanan layout
 
-
 ---
 
-### 🪨 Langkah 3: Rintangan - Batu Menggelinding
+### 🔥 Langkah 3: Rintangan - Api Menyebar
 
-1. **Insert New Object** → **Sprite** → beri nama `Boulder`
+1. **Insert New Object** → **Sprite** → beri nama `Fire`
 2. Tambah **Behavior** → pilih **Bullet**
    > *Behavior "Bullet" membuat objek bergerak otomatis ke satu arah*
-3. Atur **Speed** (kecepatan): 200
+3. Atur **Speed** (kecepatan): 150
 
 #### Event Sheet:
 
@@ -108,15 +114,15 @@ Klik kanan di area kosong → **Add event** untuk menambah event baru
 
 ```
 Event: System → On start of layout          (Saat game dimulai)
-Action: Boulder → Set Bullet Speed to 200   (Atur kecepatan batu)
+Action: Fire → Set Bullet Speed to 150      (Atur kecepatan api)
 
-Event: Player → On collision with Boulder   (Pemain menyentuh batu)
+Event: Player → On collision with Fire      (Pemain menyentuh api)
 Action: System → Restart layout             (Mulai ulang level)
 ```
 
 ---
 
-### 🌋 Langkah 4: Jurang (Zona Mati)
+### 🕳️ Langkah 4: Jurang (Zona Mati)
 
 1. Buat **Sprite** bernama `DeathZone` di bawah layout (tidak terlihat pemain)
 
@@ -134,7 +140,7 @@ Action: System → Restart layout               (Mulai ulang level)
 #### Event Sheet:
 
 ```
-Event: Player → On collision with SafeZone    (Pemain sampai pos evakuasi)
+Event: Player → On collision with SafeZone    (Pemain sampai pos aman)
 Action: System → Go to layout "WinScreen"     (Pindah ke halaman menang)
 ```
 
@@ -142,11 +148,11 @@ Action: System → Go to layout "WinScreen"     (Pindah ke halaman menang)
 
 ## 🚀 TANTANGAN TAMBAHAN - Tingkat Lanjut
 
-### ⚡ Tantangan 1: Kamera Bergerak & Awan Panas
+### ⚡ Tantangan 1: Kamera Bergerak & Api Mengejar
 
-**Tujuan:** Kamera bergerak otomatis, pemain harus tetap di layar atau kalah!
+**Tujuan:** Kamera bergerak otomatis, pemain harus tetap di layar atau terbakar!
 
-1. Buat **Sprite** bernama `HotCloud` di sisi kiri layar
+1. Buat **Sprite** bernama `FireWall` di sisi kiri layar (dinding api)
 2. Tambah **Behavior** → **Anchor** (agar mengikuti kamera)
 
 #### Event Sheet:
@@ -157,65 +163,65 @@ Action: System → Scroll to X: ScrollX + 2     (Geser kamera ke kanan)
 
 Event: Player.X < ScrollX - 300               (Pemain tertinggal di kiri)
 Action: System → Restart layout
-        Text → Set text to "Tertimpa Awan Panas!"
+        Text → Set text to "Terbakar Api Hutan!"
 ```
 
 ---
 
-### 🎭 Tantangan 2: Kumpulkan Masker
+### 🎭 Tantangan 2: Kumpulkan Air
 
-**Tujuan:** Kumpulkan semua masker sebelum pintu evakuasi terbuka!
+**Tujuan:** Kumpulkan semua ember air untuk memadamkan api di garis finish!
 
-1. Buat **Sprite** bernama `Mask`
-2. Buat **Global Variable** → `MaskCollected = 0`
+1. Buat **Sprite** bernama `Water`
+2. Buat **Global Variable** → `WaterCollected = 0`
    - Klik kanan di **Event Sheet** → **Add global variable**
-   
+
 ![add-global-variable](./Assets/screenshots/add-global-variable.png)
 
-3. Buat **Global Variable** → `TotalMasks = 5`
+3. Buat **Global Variable** → `TotalWater = 5`
 
 #### Event Sheet:
 
 ```
-Event: Player → On collision with Mask        (Pemain mengambil masker)
-Action: Mask → Destroy                        (Hapus masker)
-        System → Add 1 to MaskCollected       (Tambah penghitung)
+Event: Player → On collision with Water       (Pemain mengambil air)
+Action: Water → Destroy                       (Hapus air)
+        System → Add 1 to WaterCollected      (Tambah penghitung)
         Audio → Play "pickup_sound"           (Mainkan suara)
 
-Event: System → MaskCollected = TotalMasks    (Semua masker terkumpul)
-Action: SafeZone → Set Visible to True        (Tampilkan pos evakuasi)
-        Text → Set text to "Pintu Evakuasi Terbuka!"
+Event: System → WaterCollected = TotalWater   (Semua air terkumpul)
+Action: SafeZone → Set Visible to True        (Tampilkan pos aman)
+        Text → Set text to "Api Padam! Jalan Terbuka!"
 
-Event: Player → On collision with SafeZone    (Pemain ke pos evakuasi)
-       System → MaskCollected < TotalMasks    (Tapi masker belum lengkap)
-Action: Text → Set text to "Kumpulkan semua masker dulu!"
+Event: Player → On collision with SafeZone    (Pemain ke pos aman)
+       System → WaterCollected < TotalWater   (Tapi air belum lengkap)
+Action: Text → Set text to "Kumpulkan semua air dulu!"
 ```
 
 ---
 
-### 👥 Tantangan 3: Selamatkan Penduduk
+### 🦧 Tantangan 3: Selamatkan Orangutan
 
-**Tujuan:** Bantu penduduk desa mencapai pos evakuasi!
+**Tujuan:** Bantu orangutan mencapai pos aman!
 
-1. Buat **Sprite** bernama `Villager`
-2. Buat **Instance Variable** di Villager: `IsRescued = False`
-   - Klik pada Villager → di panel **Properties** (kiri) → klik **Instance variables** → **Add**
-   
+1. Buat **Sprite** bernama `Orangutan`
+2. Buat **Instance Variable** di Orangutan: `IsRescued = False`
+   - Klik pada Orangutan → di panel **Properties** (kiri) → klik **Instance variables** → **Add**
+
 ![instance-variable](./Assets/screenshots/instance-variable.png)
 
 #### Event Sheet:
 
 ```
-Event: Player → On collision with Villager    (Pemain menyentuh penduduk)
-       Villager → IsRescued = False           (Yang belum diselamatkan)
-Action: Villager → Set IsRescued to True      (Tandai sudah diselamatkan)
-        Villager → Pin to Player              (Tempelkan ke pemain)
-        Text → Set text to "Penduduk bergabung!"
+Event: Player → On collision with Orangutan   (Pemain menyentuh orangutan)
+       Orangutan → IsRescued = False          (Yang belum diselamatkan)
+Action: Orangutan → Set IsRescued to True     (Tandai sudah diselamatkan)
+        Orangutan → Pin to Player             (Tempelkan ke pemain)
+        Text → Set text to "Orangutan bergabung!"
 
-Event: Villager → IsRescued = True            (Penduduk yang sudah diselamatkan)
-       Player → On collision with SafeZone    (Sampai di pos evakuasi)
+Event: Orangutan → IsRescued = True           (Orangutan yang sudah diselamatkan)
+       Player → On collision with SafeZone    (Sampai di pos aman)
 Action: System → Add 100 to Score             (Tambah skor)
-        Text → Set text to "Evakuasi Berhasil! +100 Poin"
+        Text → Set text to "Orangutan Selamat! +100 Poin"
 ```
 
 
@@ -546,6 +552,7 @@ Action: Text → Set text to "Cermin Habis! Atur Posisi dengan Bijak!"
 | Behavior | Fungsi | Digunakan di |
 |----------|--------|--------------|
 | **Platform** | Karakter bisa jalan & lompat | Misi 1 |
+| **Tilemap** | Menggambar level dari tile | Misi 1 |
 | **Bullet** | Objek bergerak otomatis lurus | Misi 1, 2, 3 |
 | **Solid** | Objek tidak bisa ditembus | Semua Misi |
 | **Drag & Drop** | Objek bisa digeser pakai mouse | Misi 3 |

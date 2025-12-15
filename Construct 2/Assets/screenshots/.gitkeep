@@ -4,19 +4,22 @@ Tambahkan screenshot berikut dari Construct 2:
 
 ## Daftar Screenshot yang Dibutuhkan:
 
-1. `new-project.png` - Menu File → New Project
-2. `layout-size.png` - Panel Properties dengan Layout Size
-3. `layers-panel.png` - Panel Layers di kanan
-4. `insert-new-object.png` - Menu klik kanan → Insert New Object
-5. `select-sprite.png` - Dialog pilih Sprite
-6. `image-editor.png` - Image Editor dengan tombol load image
-7. `add-behavior.png` - Menu klik kanan → Behaviors
-8. `select-platform-behavior.png` - Dialog pilih Platform behavior
-9. `select-tiled-background.png` - Dialog pilih Tiled Background
-10. `add-global-variable.png` - Menu Add global variable di Event Sheet
-11. `instance-variable.png` - Panel Properties → Instance variables
-12. `open-event-sheet.png` - Double-click Event Sheet di Projects panel
-13. `add-event.png` - Menu klik kanan → Add event
+| No | File Name | Lokasi di Construct 2 | Keterangan |
+|----|-----------|----------------------|------------|
+| 1 | `new-project.png` | File → New → New empty project | Dialog buat project baru |
+| 2 | `layout-size.png` | Klik Layout 1 → Properties (kiri) → Layout Size | Setting ukuran layar |
+| 3 | `layers-panel.png` | Panel kanan → Tab "Layers" → tombol + | Panel manage layers |
+| 4 | `insert-new-object.png` | Klik kanan di Layout → Insert New Object | Menu tambah objek |
+| 5 | `select-sprite.png` | Dialog "Insert New Object" → pilih Sprite | Dialog pilih tipe objek |
+| 6 | `select-tilemap.png` | Dialog "Insert New Object" → pilih Tilemap | Dialog pilih Tilemap |
+| 7 | `tilemap-editor.png` | Double-click Tilemap → Tilemap Editor | Editor untuk gambar level |
+| 8 | `image-editor.png` | Double-click Sprite → Image Editor | Editor gambar sprite |
+| 9 | `add-behavior.png` | Klik kanan Sprite → Behaviors | Menu tambah behavior |
+| 10 | `select-platform-behavior.png` | Dialog "Add Behavior" → pilih Platform | Dialog pilih behavior |
+| 11 | `add-global-variable.png` | Event Sheet → Klik kanan → Add global variable | Menu tambah variable |
+| 12 | `instance-variable.png` | Klik Sprite → Properties → Instance variables | Variable per-objek |
+| 13 | `open-event-sheet.png` | Panel Projects → Double-click Event Sheet 1 | Cara buka event sheet |
+| 14 | `add-event.png` | Event Sheet → Klik kanan → Add event | Menu tambah event |
 
 ## Tips Screenshot:
 - Gunakan resolusi yang jelas
