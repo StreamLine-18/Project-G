@@ -139,10 +139,20 @@ h2 {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    align-items: stretch;
+}
+
+#teamForm > input[type="text"] {
+    flex: 2;
+    min-width: 200px;
+}
+
+#teamForm > input[type="number"] {
+    flex: 0 0 100px;
+    min-width: 100px;
 }
 
 #teamForm input,
-#teamForm select,
 #teamForm button {
     padding: 12px 15px;
     border: none;
@@ -150,23 +160,21 @@ h2 {
     font-size: 1rem;
 }
 
-#teamForm input,
-#teamForm select {
+#teamForm > input {
     background: var(--bg-secondary);
     color: white;
     border: 2px solid var(--bg-card);
-    flex: 1;
-    min-width: 150px;
 }
 
-#teamForm button {
+#teamForm > button {
     background: linear-gradient(145deg, var(--accent-orange), var(--accent-red));
     color: white;
     font-weight: bold;
     cursor: pointer;
+    flex: 0 0 auto;
 }
 
-#teamForm button:hover {
+#teamForm > button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
 }
@@ -304,32 +312,4 @@ footer button.danger {
     }
 }
 
-/* Radio Button Styles */
-.category-select {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    background: var(--bg-secondary);
-    padding: 0 15px;
-    border: 2px solid var(--bg-card);
-    border-radius: 8px;
-    min-width: 250px;
-    flex: 1;
-}
-
-.category-select label {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    color: white;
-    font-size: 1rem;
-}
-
-.category-select input[type="radio"] {
-    accent-color: var(--accent-teal);
-    width: auto;
-    min-width: auto;
-    margin: 0;
-    flex: 0;
-}
+/* Radio Button Styles - moved to admin.css */

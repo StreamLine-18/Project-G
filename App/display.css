@@ -64,7 +64,6 @@
     color: var(--accent-yellow, #ffc107);
     margin-bottom: 20px;
     font-size: 2rem;
-    text-transform: uppercase;
     letter-spacing: 2px;
 }
 

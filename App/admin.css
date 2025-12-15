@@ -65,12 +65,13 @@
 /* Category Radio Buttons */
 .category-select {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     align-items: center;
-    padding: 10px 15px;
+    padding: 12px 20px;
     background: var(--bg-secondary, #0d1f3c);
     border-radius: 8px;
     border: 2px solid var(--bg-card, #0f2847);
+    flex: 0 0 auto;
 }
 
 .category-select label {
@@ -79,19 +80,21 @@
     gap: 8px;
     cursor: pointer;
     color: var(--text-primary, #fff);
-    font-size: 0.95rem;
+    font-size: 1rem;
+    white-space: nowrap;
 }
 
 .category-select input[type="radio"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     border: 2px solid var(--accent-teal, #00b4d8);
     border-radius: 50%;
     cursor: pointer;
     position: relative;
     transition: all 0.2s;
+    flex-shrink: 0;
 }
 
 .category-select input[type="radio"]:checked {
@@ -137,4 +140,23 @@
     .leaderboard-grid {
         grid-template-columns: 1fr;
     }
+}
+
+
+/* Error Message */
+.error-message {
+    background: rgba(233, 57, 70, 0.2);
+    border: 1px solid var(--accent-red, #e63946);
+    color: var(--accent-red, #e63946);
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
 }

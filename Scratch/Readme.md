@@ -14,81 +14,115 @@ Bingung dengan blok-blok Scratch? Pakai cheat sheet ini aja!
 
 ---
 
+## 📖 Daftar Istilah
+
+| Istilah | Arti |
+|---------|------|
+| **Sprite** | Gambar/karakter yang bisa bergerak di game |
+| **Stage** | Latar belakang/background game |
+| **Costume** | Tampilan/gambar sprite (bisa punya banyak) |
+| **Block** | Perintah yang bisa disusun untuk membuat program |
+| **Variable** | Tempat menyimpan angka atau teks (seperti skor) |
+| **Forever** | Blok pengulangan yang jalan terus-menerus |
+| **If-Then** | Blok kondisi "Jika...maka..." |
+| **Broadcast** | Mengirim pesan ke sprite lain |
+
+---
+
 ## 🌊 Misi 1: Siaga Banjir (Evakuasi Kampung)
 
 **Genre:** Endless Runner  
 **Tujuan:** Bantu karakter berlari menyelamatkan diri dari banjir sambil menghindari sampah yang hanyut.
 
+---
+
 ### 🛠️ Langkah 1: Persiapan Aset
 
-- Pilih **Sprite Utama** (Orang/Karakter)
-- Pilih **Background** (Perkotaan atau Sungai)
-- Pilih **Sprite Rintangan** (Kayu, Sampah, atau Batu)
+- Pilih **Sprite** untuk karakter utama (Orang)
+- Pilih **Backdrop** untuk latar belakang (Perkotaan/Sungai)
+- Pilih **Sprite** untuk rintangan (Kayu, Sampah, Batu)
 
-### 💻 Langkah 2: Logika Gravitasi (Agar bisa jatuh)
+---
+
+### 💻 Langkah 2: Logika Gravitasi
 
 Masukan kode ini di **Sprite Utama**:
 
-> **Logika:** "Jika tidak menyentuh tanah, karakter harus turun ke bawah."
+> **Logika:** Jika tidak menyentuh tanah, karakter jatuh ke bawah.
 
 ```
-Ketika Bendera Hijau diklik
-Set y ke -100 (Posisi awal di tanah)
-Selamanya:
-    Jika <TIDAK menyentuh warna [Warna Tanah]?> maka:
-        Ubah y sebesar -5
+when green flag clicked                    (Saat bendera hijau diklik)
+set y to -100                              (Atur posisi Y ke -100)
+forever                                    (Selamanya/ulangi terus)
+    if <not <touching color [Warna Tanah]?>> then    (Jika TIDAK menyentuh warna tanah)
+        change y by -5                     (Turunkan Y sebesar 5)
+    end
+end
 ```
+
+
+---
 
 ### 🏃 Langkah 3: Membuat Lompatan
 
 Masukan kode ini di **Sprite Utama**:
 
-> **Logika:** "Jika Spasi ditekan, karakter naik ke atas sebentar, lalu turun."
+> **Logika:** Jika tombol Spasi ditekan, karakter lompat ke atas.
 
 ```
-Ketika tombol [Spasi] ditekan
-Ulangi 10 kali:
-    Ubah y sebesar 10
+when [space] key pressed                   (Saat tombol spasi ditekan)
+repeat 10                                  (Ulangi 10 kali)
+    change y by 10                         (Naikkan Y sebesar 10)
+end
 ```
+
+---
 
 ### 🚧 Langkah 4: Rintangan Bergerak
 
 Masukan kode ini di **Sprite Rintangan**:
 
-> **Logika:** "Muncul di kanan layar, jalan ke kiri, jika mentok kiri, kembali ke kanan."
+> **Logika:** Muncul di kanan, gerak ke kiri, lalu kembali ke kanan.
 
 ```
-Ketika Bendera Hijau diklik
-Selamanya:
-    Pergi ke x: 240 y: -120 (Pojok Kanan Bawah)
-    Meluncur 2 detik ke x: -240 y: -120 (Pojok Kiri Bawah)
+when green flag clicked                    (Saat bendera hijau diklik)
+forever                                    (Selamanya)
+    go to x: 240 y: -120                   (Pergi ke pojok kanan bawah)
+    glide 2 secs to x: -240 y: -120        (Meluncur 2 detik ke kiri)
+end
 ```
 
+---
 
 ### ☠️ Langkah 5: Game Over
 
-Masukan kode di **Sprite Utama**:
+Masukan kode ini di **Sprite Utama**:
 
 ```
-Ketika Bendera Hijau diklik
-Selamanya:
-    Jika <menyentuh [Sprite Rintangan]?> maka:
-        Katakan "Awas Banjir!" selama 2 detik
-        Berhentikan semua
+when green flag clicked                    (Saat bendera hijau diklik)
+forever                                    (Selamanya)
+    if <touching [Rintangan]?> then        (Jika menyentuh rintangan)
+        say "Awas Banjir!" for 2 seconds   (Katakan selama 2 detik)
+        stop [all]                         (Berhentikan semua)
+    end
+end
 ```
 
-### 🏆 Langkah 6: Sistem Skor (Waktu Bertahan)
+---
 
-Masukan kode di **Sprite Utama**:
+### 🏆 Langkah 6: Sistem Skor
 
-> **Logika:** "Skor bertambah setiap detik selama pemain masih hidup."
+Masukan kode ini di **Sprite Utama**:
+
+> **Logika:** Skor bertambah setiap detik selama pemain masih hidup.
 
 ```
-Ketika Bendera Hijau diklik
-Set [Skor] ke 0
-Selamanya:
-    Tunggu 1 detik
-    Ubah [Skor] sebesar 1
+when green flag clicked                    (Saat bendera hijau diklik)
+set [Skor] to 0                            (Set variabel Skor ke 0)
+forever                                    (Selamanya)
+    wait 1 seconds                         (Tunggu 1 detik)
+    change [Skor] by 1                     (Tambah Skor sebesar 1)
+end
 ```
 
 ---
@@ -98,225 +132,256 @@ Selamanya:
 **Genre:** Shooter / Clicker  
 **Tujuan:** Padamkan api yang muncul secara acak sebelum hutan habis terbakar!
 
+---
+
 ### 🛠️ Langkah 1: Persiapan Aset
 
-- Pilih **Sprite Crosshair** (Bisa gambar lingkaran atau selang air)
-- Pilih **Sprite Api**
-- Pilih **Background** (Hutan)
+- Pilih **Sprite** untuk crosshair/selang air
+- Pilih **Sprite** untuk api
+- Pilih **Backdrop** hutan
 
-### 🎯 Langkah 2: Menggerakkan Semprotan Air
+---
+
+### 🎯 Langkah 2: Menggerakkan Crosshair
 
 Masukan kode ini di **Sprite Crosshair**:
 
-> **Logika:** "Sprite ini selalu menempel pada mouse."
+> **Logika:** Sprite selalu mengikuti posisi mouse.
 
 ```
-Ketika Bendera Hijau diklik
-Selamanya:
-    Pergi ke [Mouse-pointer]
+when green flag clicked                    (Saat bendera hijau diklik)
+forever                                    (Selamanya)
+    go to [mouse-pointer]                  (Pergi ke posisi mouse)
+end
 ```
+
+---
 
 ### 🔥 Langkah 3: Memunculkan Api Secara Acak
 
 Masukan kode ini di **Sprite Api**:
 
-> **Logika:** "Muncul di posisi sembarang, tunggu sebentar, lalu pindah lagi."
+> **Logika:** Muncul di posisi acak, tunggu, lalu pindah lagi.
 
 ```
-Ketika Bendera Hijau diklik
-Selamanya:
-    Pergi ke x: (Pilih acak -200 hingga 200) y: (Pilih acak -150 hingga 150)
-    Tampilkan
-    Tunggu 2 detik
-    Sembunyikan
-    Tunggu 1 detik
+when green flag clicked                    (Saat bendera hijau diklik)
+forever                                    (Selamanya)
+    go to x: (pick random -200 to 200) y: (pick random -150 to 150)
+                                           (Pergi ke posisi acak)
+    show                                   (Tampilkan sprite)
+    wait 2 seconds                         (Tunggu 2 detik)
+    if <visible?> then                     (Jika masih terlihat/belum diklik)
+        change [Nyawa] by -1               (Kurangi nyawa)
+    end
+    hide                                   (Sembunyikan sprite)
+    wait 1 seconds                         (Tunggu 1 detik)
+end
 ```
 
+---
 
 ### 💧 Langkah 4: Memadamkan Api
 
 Masukan kode ini di **Sprite Api**:
 
-> **Logika:** "Jika diklik, api hilang dan skor bertambah."
+> **Logika:** Jika diklik, api hilang dan skor bertambah.
 
 ```
-Ketika sprite ini diklik
-Mulai suara [Splash/Air]
-Sembunyikan
-Ubah [Skor] sebesar 1
-```
-
-### ☠️ Langkah 5: Game Over (Nyawa Habis)
-
-Masukan kode ini di **Stage/Background**:
-
-> **Logika:** "Pemain punya 3 nyawa. Jika api menghilang sendiri (tidak diklik), nyawa berkurang."
-
-```
-Ketika Bendera Hijau diklik
-Set [Nyawa] ke 3
-Selamanya:
-    Jika <[Nyawa] < 1> maka:
-        Katakan "Hutan Terbakar! Game Over" selama 2 detik
-        Berhentikan semua
-```
-
-Tambahkan di **Sprite Api** (setelah `Tunggu 2 detik`):
-
-```
-Ketika Bendera Hijau diklik
-Selamanya:
-    Pergi ke x: (Pilih acak -200 hingga 200) y: (Pilih acak -150 hingga 150)
-    Tampilkan
-    Tunggu 2 detik
-    Jika <terlihat?> maka:  (Jika api belum dipadamkan)
-        Ubah [Nyawa] sebesar -1
-    Sembunyikan
-    Tunggu 1 detik
+when this sprite clicked                   (Saat sprite ini diklik)
+start sound [Water Drop]                   (Mainkan suara air)
+hide                                       (Sembunyikan sprite)
+change [Skor] by 1                         (Tambah skor)
 ```
 
 ---
 
-## ♻️ Misi 3: Pilahan Sampah Nusantara
+### ☠️ Langkah 5: Game Over
+
+Masukan kode ini di **Stage**:
+
+> **Logika:** Jika nyawa habis, game over.
+
+```
+when green flag clicked                    (Saat bendera hijau diklik)
+set [Nyawa] to 3                           (Set nyawa ke 3)
+set [Skor] to 0                            (Set skor ke 0)
+forever                                    (Selamanya)
+    if <[Nyawa] < 1> then                  (Jika nyawa kurang dari 1)
+        say "Hutan Terbakar! Game Over"    (Tampilkan pesan)
+        stop [all]                         (Berhentikan semua)
+    end
+end
+```
+
+
+---
+
+## ♻️ Misi 3: Pilah Sampah Nusantara
 
 **Genre:** Catching Game  
 **Tujuan:** Tangkap sampah yang jatuh dan masukkan ke tong yang benar.
 
+---
+
 ### 🛠️ Langkah 1: Persiapan Aset
 
-- Pilih **Sprite Tong Organik** (Warna Hijau)
-- Pilih **Sprite Tong Anorganik** (Warna Kuning)
-- Pilih **Sprite Sampah Organik** (Contoh: Apel, Daun, Tulang)
-- Pilih **Sprite Sampah Anorganik** (Contoh: Botol Plastik, Kaleng, Kertas)
+- **Sprite Tong Organik** (Warna Hijau)
+- **Sprite Tong Anorganik** (Warna Kuning)
+- **Sprite Sampah Organik** (Apel, Daun, Tulang)
+- **Sprite Sampah Anorganik** (Botol Plastik, Kaleng, Kertas)
 
+---
 
 ### 🗑️ Langkah 2: Menggerakkan Tong Sampah
 
 Masukan kode ini di **Sprite Tong Organik**:
 
-> **Logika:** "Tekan panah kanan/kiri untuk bergerak."
+> **Logika:** Tekan panah kanan/kiri untuk bergerak.
 
 ```
-Ketika Bendera Hijau diklik
-Pergi ke x: -100 y: -150
-Selamanya:
-    Jika <tombol [Panah Kanan] ditekan?> maka:
-        Ubah x sebesar 10
-    Jika <tombol [Panah Kiri] ditekan?> maka:
-        Ubah x sebesar -10
+when green flag clicked                    (Saat bendera hijau diklik)
+go to x: -100 y: -150                      (Posisi awal)
+forever                                    (Selamanya)
+    if <key [right arrow] pressed?> then   (Jika panah kanan ditekan)
+        change x by 10                     (Gerak ke kanan)
+    end
+    if <key [left arrow] pressed?> then    (Jika panah kiri ditekan)
+        change x by -10                    (Gerak ke kiri)
+    end
+end
 ```
 
 Masukan kode ini di **Sprite Tong Anorganik**:
 
-> **Logika:** "Tong kedua mengikuti tong pertama di sebelahnya."
+> **Logika:** Tong kedua mengikuti tong pertama di sebelahnya.
 
 ```
-Ketika Bendera Hijau diklik
-Selamanya:
-    Pergi ke x: ([x position] dari [Tong Organik] + 80) y: -150
+when green flag clicked                    (Saat bendera hijau diklik)
+forever                                    (Selamanya)
+    go to x: ([x position] of [Tong Organik]) + 80 y: -150
+                                           (Ikuti posisi tong organik + 80)
+end
 ```
+
+---
 
 ### ⬇️ Langkah 3: Sampah Jatuh
 
 Masukan kode ini di **Sprite Sampah**:
 
-> **Logika:** "Mulai dari atas langit (Y tinggi), lalu turun terus menerus."
+> **Logika:** Mulai dari atas, lalu jatuh ke bawah.
 
 ```
-Ketika Bendera Hijau diklik
-Pergi ke x: (Pilih acak -200 hingga 200) y: 180
-Selamanya:
-    Ubah y sebesar -5
-    Jika <posisi y < -170> maka: (Jika jatuh ke tanah)
-        Pergi ke x: (Pilih acak -200 hingga 200) y: 180
+when green flag clicked                    (Saat bendera hijau diklik)
+go to x: (pick random -200 to 200) y: 180  (Posisi acak di atas)
+forever                                    (Selamanya)
+    change y by -5                         (Turun ke bawah)
+    if <y position < -170> then            (Jika sudah di bawah)
+        go to x: (pick random -200 to 200) y: 180
+                                           (Kembali ke atas, posisi acak)
+    end
+end
 ```
 
-### ✅ Langkah 4: Logika Skor (Benar/Salah)
+---
+
+### ✅ Langkah 4: Logika Skor
 
 Masukan kode ini di **Sprite Sampah Organik** (Apel, Daun):
 
-> **Logika:** "Jika dimasukkan ke tong yang BENAR = skor +1, jika SALAH = nyawa -1."
+> **Logika:** Tong benar = +1 skor, tong salah = -1 nyawa.
 
 ```
-Ketika Bendera Hijau diklik
-Selamanya:
-    Jika <menyentuh [Tong Organik]?> maka:  (BENAR)
-        Mulai suara [Pop]
-        Ubah [Skor] sebesar 1
-        Pergi ke x: (Pilih acak -200 hingga 200) y: 180
-    Jika <menyentuh [Tong Anorganik]?> maka:  (SALAH)
-        Mulai suara [Buzz]
-        Ubah [Nyawa] sebesar -1
-        Pergi ke x: (Pilih acak -200 hingga 200) y: 180
+when green flag clicked                    (Saat bendera hijau diklik)
+forever                                    (Selamanya)
+    if <touching [Tong Organik]?> then     (Jika menyentuh tong organik - BENAR)
+        start sound [Pop]                  (Suara benar)
+        change [Skor] by 1                 (Tambah skor)
+        go to x: (pick random -200 to 200) y: 180
+    end
+    if <touching [Tong Anorganik]?> then   (Jika menyentuh tong anorganik - SALAH)
+        start sound [Buzz]                 (Suara salah)
+        change [Nyawa] by -1               (Kurangi nyawa)
+        go to x: (pick random -200 to 200) y: 180
+    end
+end
 ```
-
 
 Masukan kode ini di **Sprite Sampah Anorganik** (Botol, Kaleng):
 
 ```
-Ketika Bendera Hijau diklik
-Selamanya:
-    Jika <menyentuh [Tong Anorganik]?> maka:  (BENAR)
-        Mulai suara [Pop]
-        Ubah [Skor] sebesar 1
-        Pergi ke x: (Pilih acak -200 hingga 200) y: 180
-    Jika <menyentuh [Tong Organik]?> maka:  (SALAH)
-        Mulai suara [Buzz]
-        Ubah [Nyawa] sebesar -1
-        Pergi ke x: (Pilih acak -200 hingga 200) y: 180
+when green flag clicked                    (Saat bendera hijau diklik)
+forever                                    (Selamanya)
+    if <touching [Tong Anorganik]?> then   (Jika menyentuh tong anorganik - BENAR)
+        start sound [Pop]                  (Suara benar)
+        change [Skor] by 1                 (Tambah skor)
+        go to x: (pick random -200 to 200) y: 180
+    end
+    if <touching [Tong Organik]?> then     (Jika menyentuh tong organik - SALAH)
+        start sound [Buzz]                 (Suara salah)
+        change [Nyawa] by -1               (Kurangi nyawa)
+        go to x: (pick random -200 to 200) y: 180
+    end
+end
 ```
+
+---
 
 ### ☠️ Langkah 5: Game Over
 
-Masukan kode ini di **Stage/Background**:
+Masukan kode ini di **Stage**:
 
 ```
-Ketika Bendera Hijau diklik
-Set [Nyawa] ke 3
-Set [Skor] ke 0
-Selamanya:
-    Jika <[Nyawa] < 1> maka:
-        Katakan "Game Over! Skor: " gabung [Skor]
-        Berhentikan semua
+when green flag clicked                    (Saat bendera hijau diklik)
+set [Nyawa] to 3                           (Set nyawa ke 3)
+set [Skor] to 0                            (Set skor ke 0)
+forever                                    (Selamanya)
+    if <[Nyawa] < 1> then                  (Jika nyawa habis)
+        say (join "Game Over! Skor: " [Skor])
+        stop [all]                         (Berhentikan semua)
+    end
+end
 ```
+
 
 ---
 
-## 📚 Cara Membuat Variabel di Scratch
+## 📚 Cara Membuat Variable di Scratch
 
-1. Klik kategori **Variabel** (warna oranye) di panel blok
-2. Klik tombol **"Buat Variabel"**
-3. Ketik nama variabel (contoh: `Skor` atau `Nyawa`)
-4. Pilih **"Untuk semua sprite"**
+1. Klik kategori **Variables** (warna oranye) di panel blok
+2. Klik tombol **"Make a Variable"**
+3. Ketik nama variable (contoh: `Skor` atau `Nyawa`)
+4. Pilih **"For all sprites"**
 5. Klik **OK**
-6. Variabel akan muncul di layar game secara otomatis
+6. Variable akan muncul di layar game secara otomatis
 
-> 💡 **Tips:** Buat variabel `Skor` dan `Nyawa` sebelum menjalankan game!
+> 💡 **Tips:** Buat variable `Skor` dan `Nyawa` sebelum menjalankan game!
 
 ---
 
-## 📝 Catatan
+## 📝 Catatan Penting
 
 - **Target:** Siswa SD Kelas 4-6 / SMP
-- Semua kode ditulis dalam format **Scratch Block** (pseudocode Indonesia)
+- Kode ditulis dalam format **Scratch Block** (Bahasa Inggris) dengan penjelasan Indonesia
 - Sesuaikan warna, suara, dan sprite sesuai kreativitas masing-masing
-- Jangan lupa untuk membuat variabel **Skor** dan **Nyawa** sebelum menjalankan game
+- Jangan lupa membuat variable **Skor** dan **Nyawa** sebelum menjalankan game
 
 ---
 
-## 🔗 Referensi & Link
+## 🔗 Link Berguna
 
-- [Scratch Official Website](https://scratch.mit.edu/)
-- [Scratch Editor Online](https://scratch.mit.edu/projects/editor/)
-- [Tutorial Scratch Bahasa Indonesia](https://scratch.mit.edu/ideas)
-- [Asset Tambahan](https://www.flaticon.com/)
+| Link | Keterangan |
+|------|------------|
+| [Scratch Editor](https://scratch.mit.edu/projects/editor/) | Buat game langsung di browser |
+| [Scratch Ideas](https://scratch.mit.edu/ideas) | Tutorial dan inspirasi |
+| [Flaticon](https://www.flaticon.com/) | Gambar/icon gratis |
 
 ---
 
 ## 🎯 Tantangan Tambahan
 
 | Misi | Tantangan |
-|------|----------|
+|------|-----------|
 | Misi 1 | Tambahkan power-up "Perahu" yang membuat karakter kebal 5 detik |
 | Misi 2 | Buat api muncul lebih cepat setiap 10 skor |
 | Misi 3 | Tambahkan jenis sampah ke-3: **B3 (Bahan Berbahaya)** dengan tong merah |

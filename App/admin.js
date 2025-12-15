@@ -108,25 +108,47 @@ function handleCustomScore(event, teamName, inputId) {
     }
 }
 
+function showError(message) {
+    // Remove existing error if any
+    const existingError = document.querySelector('.error-message');
+    if (existingError) existingError.remove();
+
+    // Create error element
+    const error = document.createElement('div');
+    error.className = 'error-message';
+    error.textContent = message;
+
+    // Insert after form
+    const form = document.getElementById('teamForm');
+    form.parentNode.insertBefore(error, form.nextSibling);
+
+    // Auto remove after 3 seconds
+    setTimeout(() => error.remove(), 3000);
+}
+
 function addOrUpdateTeam(e) {
     e.preventDefault();
     const teams = getTeams();
-    const name = document.getElementById('teamName').value.trim();
+    const nameInput = document.getElementById('teamName');
+    const name = nameInput.value.trim();
     const category = document.querySelector('input[name="teamCategory"]:checked').value;
     const score = parseInt(document.getElementById('teamScore').value) || 0;
 
+    // Check for duplicate name
     const existing = teams.findIndex(t => t.name.toLowerCase() === name.toLowerCase());
     if (existing >= 0) {
-        teams[existing].score = score;
-        teams[existing].category = category; // Update category if changed
-    } else {
-        teams.push({ name, score, category });
+        // Show error - team already exists
+        showError(`⚠️ Tim "${name}" sudah ada! Gunakan nama lain.`);
+        nameInput.focus();
+        nameInput.select();
+        return;
     }
 
+    // Add new team
+    teams.push({ name, score, category });
     saveTeams(teams);
     renderLeaderboard();
     document.getElementById('teamForm').reset();
-    // Reset category to default if needed, or keep last selection? Default is fine.
 }
 
 function addPoints(teamName, points) {

@@ -35,7 +35,7 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
 ![new-project-menu](./Assets/screenshots/new-project.png)
 
-2. Atur ukuran layar (**Layout Size**): **1280 x 720**
+2. Atur ukuran layar (**Layout Size**): Misal **1280 x 720**
    - Klik pada **Layout 1** di panel Projects (kanan)
    - Lihat panel **Properties** (kiri), cari **Layout Size**
 
