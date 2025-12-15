@@ -1,0 +1,24 @@
+# Screenshot Placeholders
+
+Tambahkan screenshot berikut dari Construct 2:
+
+## Daftar Screenshot yang Dibutuhkan:
+
+1. `new-project.png` - Menu File → New Project
+2. `layout-size.png` - Panel Properties dengan Layout Size
+3. `layers-panel.png` - Panel Layers di kanan
+4. `insert-new-object.png` - Menu klik kanan → Insert New Object
+5. `select-sprite.png` - Dialog pilih Sprite
+6. `image-editor.png` - Image Editor dengan tombol load image
+7. `add-behavior.png` - Menu klik kanan → Behaviors
+8. `select-platform-behavior.png` - Dialog pilih Platform behavior
+9. `select-tiled-background.png` - Dialog pilih Tiled Background
+10. `add-global-variable.png` - Menu Add global variable di Event Sheet
+11. `instance-variable.png` - Panel Properties → Instance variables
+12. `open-event-sheet.png` - Double-click Event Sheet di Projects panel
+13. `add-event.png` - Menu klik kanan → Add event
+
+## Tips Screenshot:
+- Gunakan resolusi yang jelas
+- Highlight/kotak merah pada area yang penting
+- Crop hanya bagian yang relevan

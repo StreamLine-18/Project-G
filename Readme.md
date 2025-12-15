@@ -94,15 +94,15 @@ Semua game dalam hackathon ini mengangkat tema **pelestarian lingkungan**, melip
 
 ## 🎨 Sumber Asset Gratis
 
-| Sumber | Deskripsi |
-|--------|-----------|
-| [Kenney.nl](https://kenney.nl/) | Game assets gratis (sprite, tileset, UI) |
-| [Flaticon.com](https://www.flaticon.com/) | Icon dan ilustrasi |
-| [Game-Icons.net](https://Game-Icons.net/) | Icon game gratis |
-| [OpenGameArt.org](https://opengameart.org/) | Asset game open source |
-| [Freesound.org](https://freesound.org/) | Sound effect gratis |
-| [Mixkit.co](https://Mixkit.co/) | Sound effect gratis |
-| [Sfxr.me](https://Sfxr.me/) | Sound effect gratis |
+| Sumber | Keterangan |
+|--------|------------|
+| [Kenney.nl](https://kenney.nl/) | Gambar karakter, latar belakang, dan tombol untuk game |
+| [Flaticon.com](https://www.flaticon.com/) | Ikon dan gambar ilustrasi |
+| [Game-Icons.net](https://game-icons.net/) | Ikon khusus untuk game |
+| [OpenGameArt.org](https://opengameart.org/) | Kumpulan asset game gratis |
+| [Freesound.org](https://freesound.org/) | Efek suara gratis |
+| [Mixkit.co](https://mixkit.co/) | Efek suara dan musik gratis |
+| [Sfxr.me](https://sfxr.me/) | Buat efek suara sendiri (retro style) |
 
 ---
 

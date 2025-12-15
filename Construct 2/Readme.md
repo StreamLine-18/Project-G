@@ -6,73 +6,125 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
 ---
 
+## 📖 Daftar Istilah
+
+| Istilah | Arti |
+|---------|------|
+| **Sprite** | Gambar/objek yang bisa bergerak di game |
+| **Layout** | Halaman atau layar game (seperti level) |
+| **Behavior** | Perilaku otomatis yang ditambahkan ke objek |
+| **Event Sheet** | Tempat menulis logika/aturan game |
+| **Event** | Kondisi/kejadian yang memicu aksi |
+| **Action** | Aksi yang dilakukan saat event terjadi |
+| **Variable** | Tempat menyimpan angka atau teks (seperti skor) |
+| **Collision** | Saat dua objek bertabrakan/bersentuhan |
+
+---
+
 ## 🏔️ Misi 1: Ekspedisi Gunung Merapi
 
-**Genre:** Platformer  
-**Konteks:** Mitigasi bencana gunung meletus dan evakuasi mandiri  
-**Tujuan:** Karakter harus mencapai pos evakuasi sebelum tertimpa awan panas!
-
-<!-- ![Preview Game](./Assets/Misi-1-Merapi/preview.png) -->
+**Jenis Game:** Platformer (lompat-lompatan)  
+**Tema:** Evakuasi bencana gunung meletus  
+**Tujuan:** Karakter harus sampai ke pos evakuasi sebelum tertimpa awan panas!
 
 ---
 
-### 🛠️ Langkah 1: Setup Project & Layout
+### 🛠️ Langkah 1: Buat Project Baru
 
-1. Buka **Construct 2/3** dan buat **New Project**
-2. Atur **Layout Size**: 1280 x 720
-3. Tambahkan **Background** (gambar gunung berapi)
-4. Buat **Layer** baru untuk UI (skor, timer)
+1. Buka **Construct 2** dan klik **New Project**
+
+![new-project-menu](./Assets/screenshots/new-project.png)
+
+2. Atur ukuran layar (**Layout Size**): **1280 x 720**
+   - Klik pada **Layout 1** di panel Projects (kanan)
+   - Lihat panel **Properties** (kiri), cari **Layout Size**
+
+![layout-size-properties](./Assets/screenshots/layout-size.png)
+
+3. Tambahkan gambar latar belakang (gunung berapi)
+4. Buat **Layer** baru untuk tampilan skor dan timer
+   - Klik tab **Layers** di panel kanan
+   - Klik icon **+** untuk tambah layer baru
+
+![layers-panel](./Assets/screenshots/layers-panel.png)
 
 ---
 
-### 🎮 Langkah 2: Membuat Karakter dengan Platformer Behavior
+### 🎮 Langkah 2: Membuat Karakter Pemain
 
-#### A. Tambah Sprite Player
+#### A. Tambah Gambar Karakter
 
-1. Insert New Object → **Sprite** → Beri nama `Player`
-2. Gambar karakter atau import gambar
-3. Klik kanan pada `Player` → **Behaviors** → Add → **Platformer**
+1. Klik kanan di Layout → **Insert New Object** → pilih **Sprite** → beri nama `Player`
 
-#### B. Buat Tanah (Platform)
+![insert-new-object](./Assets/screenshots/insert-new-object.png)
 
-1. Insert New Object → **Tiled Background** → Beri nama `Ground`
-2. Klik kanan pada `Ground` → **Behaviors** → Add → **Solid**
+![select-sprite](./Assets/screenshots/select-sprite.png)
 
-#### C. Buat Pos Evakuasi
+2. Gambar karakter atau masukkan gambar dari file (klik folder icon di Image Editor)
 
-1. Insert New Object → **Sprite** → Beri nama `SafeZone`
+![image-editor](./Assets/screenshots/image-editor.png)
+
+3. Klik kanan pada `Player` di Layout → **Behaviors** → **Add** → pilih **Platform**
+
+![add-behavior](./Assets/screenshots/add-behavior.png)
+
+![select-platform-behavior](./Assets/screenshots/select-platform-behavior.png)
+
+   > *Behavior "Platform" membuat karakter bisa jalan dan lompat otomatis*
+
+#### B. Buat Tanah/Pijakan
+
+1. **Insert New Object** → **Tiled Background** → beri nama `Ground`
+
+![select-tiled-background](./Assets/screenshots/select-tiled-background.png)
+
+2. Klik kanan → **Behaviors** → **Add** → pilih **Solid**
+   > *Behavior "Solid" membuat objek tidak bisa ditembus*
+
+#### C. Buat Pos Evakuasi (Garis Finish)
+
+1. **Insert New Object** → **Sprite** → beri nama `SafeZone`
 2. Letakkan di ujung kanan layout
+
 
 ---
 
 ### 🪨 Langkah 3: Rintangan - Batu Menggelinding
 
-1. Insert New Object → **Sprite** → Beri nama `Boulder`
-2. Add Behavior → **Bullet** (untuk bergerak otomatis)
-3. Atur **Speed**: 200, **Angle**: 0 (ke kanan)
+1. **Insert New Object** → **Sprite** → beri nama `Boulder`
+2. Tambah **Behavior** → pilih **Bullet**
+   > *Behavior "Bullet" membuat objek bergerak otomatis ke satu arah*
+3. Atur **Speed** (kecepatan): 200
 
 #### Event Sheet:
 
-```
-Event: System → On start of layout
-Action: Boulder → Set Bullet Speed to 200
+Buka **Event Sheet 1** (double-click di panel Projects)
 
-Event: Player → On collision with Boulder
-Action: System → Restart layout
+![open-event-sheet](./Assets/screenshots/open-event-sheet.png)
+
+Klik kanan di area kosong → **Add event** untuk menambah event baru
+
+![add-event](./Assets/screenshots/add-event.png)
+
+```
+Event: System → On start of layout          (Saat game dimulai)
+Action: Boulder → Set Bullet Speed to 200   (Atur kecepatan batu)
+
+Event: Player → On collision with Boulder   (Pemain menyentuh batu)
+Action: System → Restart layout             (Mulai ulang level)
 ```
 
 ---
 
-### 🌋 Langkah 4: Jurang (Pit Detection)
+### 🌋 Langkah 4: Jurang (Zona Mati)
 
-1. Buat **Sprite** bernama `DeathZone` di bawah layout (tidak terlihat)
+1. Buat **Sprite** bernama `DeathZone` di bawah layout (tidak terlihat pemain)
 
 #### Event Sheet:
 
 ```
-Event: Player → On collision with DeathZone
-Action: System → Restart layout
-       Player → Set Position to (X: 100, Y: 300)  // Posisi awal
+Event: Player → On collision with DeathZone   (Pemain jatuh ke jurang)
+Action: System → Restart layout               (Mulai ulang level)
 ```
 
 ---
@@ -82,513 +134,481 @@ Action: System → Restart layout
 #### Event Sheet:
 
 ```
-Event: Player → On collision with SafeZone
-Action: System → Go to layout "WinScreen"
-       // Atau tampilkan Text "Selamat! Kamu Berhasil Evakuasi!"
+Event: Player → On collision with SafeZone    (Pemain sampai pos evakuasi)
+Action: System → Go to layout "WinScreen"     (Pindah ke halaman menang)
 ```
 
 ---
 
-## 🚀 IMPROVEMENT CHALLENGE - Tingkat Lanjut
+## 🚀 TANTANGAN TAMBAHAN - Tingkat Lanjut
 
-### ⚡ Challenge 1: Auto-Scroll & Awan Panas
+### ⚡ Tantangan 1: Kamera Bergerak & Awan Panas
 
-**Tujuan:** Kamera bergerak otomatis, pemain harus tetap di layar atau Game Over!
+**Tujuan:** Kamera bergerak otomatis, pemain harus tetap di layar atau kalah!
 
-#### Langkah:
-
-1. Buat **Sprite** bernama `HotCloud` (awan panas) di sisi kiri layar
-2. Add Behavior → **Anchor** (agar mengikuti kamera)
+1. Buat **Sprite** bernama `HotCloud` di sisi kiri layar
+2. Tambah **Behavior** → **Anchor** (agar mengikuti kamera)
 
 #### Event Sheet:
 
 ```
-Event: System → Every tick
-Action: System → Scroll to X: Self.ScrollX + 2  // Kamera bergerak ke kanan
+Event: System → Every tick                    (Setiap saat, terus menerus)
+Action: System → Scroll to X: ScrollX + 2     (Geser kamera ke kanan)
 
-Event: Player.X < ScrollX - 300  // Jika player tertinggal di kiri
+Event: Player.X < ScrollX - 300               (Pemain tertinggal di kiri)
 Action: System → Restart layout
-       Text → Set text to "Tertimpa Awan Panas!"
+        Text → Set text to "Tertimpa Awan Panas!"
 ```
 
 ---
 
-### 🎭 Challenge 2: Collectibles - Masker Wajib
+### 🎭 Tantangan 2: Kumpulkan Masker
 
 **Tujuan:** Kumpulkan semua masker sebelum pintu evakuasi terbuka!
 
-#### Langkah:
-
 1. Buat **Sprite** bernama `Mask`
 2. Buat **Global Variable** → `MaskCollected = 0`
-3. Buat **Global Variable** → `TotalMasks = 5`  (sesuaikan jumlah)
+   - Klik kanan di **Event Sheet** → **Add global variable**
+   
+![add-global-variable](./Assets/screenshots/add-global-variable.png)
+
+3. Buat **Global Variable** → `TotalMasks = 5`
 
 #### Event Sheet:
 
 ```
-Event: Player → On collision with Mask
-Action: Mask → Destroy
-       System → Add 1 to MaskCollected
-       Audio → Play "pickup_sound"
+Event: Player → On collision with Mask        (Pemain mengambil masker)
+Action: Mask → Destroy                        (Hapus masker)
+        System → Add 1 to MaskCollected       (Tambah penghitung)
+        Audio → Play "pickup_sound"           (Mainkan suara)
 
-Event: System → MaskCollected = TotalMasks
-Action: SafeZone → Set Visible to True
-       SafeZone → Enable Solid behavior
-       Text → Set text to "Pintu Evakuasi Terbuka!"
+Event: System → MaskCollected = TotalMasks    (Semua masker terkumpul)
+Action: SafeZone → Set Visible to True        (Tampilkan pos evakuasi)
+        Text → Set text to "Pintu Evakuasi Terbuka!"
 
-// Saat belum semua masker terkumpul
-Event: Player → On collision with SafeZone
-       System → MaskCollected < TotalMasks
-Action: Text → Set text to "Kumpulkan semua masker dulu! (" & MaskCollected & "/" & TotalMasks & ")"
+Event: Player → On collision with SafeZone    (Pemain ke pos evakuasi)
+       System → MaskCollected < TotalMasks    (Tapi masker belum lengkap)
+Action: Text → Set text to "Kumpulkan semua masker dulu!"
 ```
 
 ---
 
-### 👥 Challenge 3: NPC yang Harus Digendong
+### 👥 Tantangan 3: Selamatkan Penduduk
 
 **Tujuan:** Bantu penduduk desa mencapai pos evakuasi!
 
-#### Langkah:
-
 1. Buat **Sprite** bernama `Villager`
-2. Buat **Boolean Variable** di `Villager` → `IsRescued = False`
+2. Buat **Instance Variable** di Villager: `IsRescued = False`
+   - Klik pada Villager → di panel **Properties** (kiri) → klik **Instance variables** → **Add**
+   
+![instance-variable](./Assets/screenshots/instance-variable.png)
 
 #### Event Sheet:
 
 ```
-Event: Player → On collision with Villager
-       Villager → IsRescued = False
-Action: Villager → Set IsRescued to True
-       Villager → Pin to Player (Position & Angle)
-       Text → Set text to "Penduduk bergabung!"
+Event: Player → On collision with Villager    (Pemain menyentuh penduduk)
+       Villager → IsRescued = False           (Yang belum diselamatkan)
+Action: Villager → Set IsRescued to True      (Tandai sudah diselamatkan)
+        Villager → Pin to Player              (Tempelkan ke pemain)
+        Text → Set text to "Penduduk bergabung!"
 
-Event: Villager → IsRescued = True
-       Player → On collision with SafeZone
-Action: System → Add 100 to Score
-       Text → Set text to "Evakuasi Berhasil! +100 Poin"
-       System → Go to layout "WinScreen"
-
-// Jika sampai tanpa NPC
-Event: Villager → IsRescued = False
-       Player → On collision with SafeZone
-Action: Text → Set text to "Jangan tinggalkan penduduk!"
+Event: Villager → IsRescued = True            (Penduduk yang sudah diselamatkan)
+       Player → On collision with SafeZone    (Sampai di pos evakuasi)
+Action: System → Add 100 to Score             (Tambah skor)
+        Text → Set text to "Evakuasi Berhasil! +100 Poin"
 ```
+
 
 ---
 
-## 🚌 Misi 2: Juragan TransJakarta (Busway)
+## 🚌 Misi 2: Juragan TransJakarta
 
-**Genre:** Top-Down / Traffic Control  
-**Konteks:** Kemacetan Jakarta & disiplin berlalu lintas  
+**Jenis Game:** Pengatur Lalu Lintas  
+**Tema:** Kemacetan Jakarta & disiplin berlalu lintas  
 **Tujuan:** Kendalikan lalu lintas agar bus tidak menabrak pengendara liar!
 
-<!-- ![Preview Game](./Assets/Misi-2-Busway/preview.png) -->
+---
+
+### 🛠️ Langkah 1: Buat Layout
+
+1. Ukuran layar (**Layout Size**): **1920 x 1080**
+2. Gambar latar: Jalan dengan jalur busway (garis kuning)
+3. Buat **3 jalur**: Kiri (motor), Tengah (busway), Kanan (motor)
 
 ---
 
-### 🛠️ Langkah 1: Setup Layout
+### 🚍 Langkah 2: Bus yang Bergerak
 
-1. **Layout Size**: 1920 x 1080 (landscape lebar)
-2. **Background**: Jalan dengan jalur busway (garis kuning)
-3. Buat **3 Lane**: Jalur kiri (motor), Jalur tengah (busway), Jalur kanan (motor)
-
----
-
-### 🚍 Langkah 2: Bus dengan Bullet Behavior
-
-1. Insert New Object → **Sprite** → Beri nama `Bus`
-2. Add Behavior → **Bullet**
-3. Atur **Speed**: 150, **Angle**: 0
+1. **Insert New Object** → **Sprite** → beri nama `Bus`
+2. Tambah **Behavior** → **Bullet**
+3. Atur **Speed**: 150
 
 #### Event Sheet:
 
 ```
-Event: System → On start of layout
-Action: Bus → Set Bullet enabled
-       Bus → Set Bullet Speed to 150
+Event: System → On start of layout            (Saat game dimulai)
+Action: Bus → Set Bullet enabled              (Aktifkan gerakan)
+        Bus → Set Bullet Speed to 150         (Atur kecepatan)
 ```
 
 ---
 
-### 🏍️ Langkah 3: Motor yang Nyeberang Acak
+### 🏍️ Langkah 3: Motor yang Muncul Acak
 
 1. Buat **Sprite** → `Motorcycle`
-2. Add Behavior → **Bullet**
+2. Tambah **Behavior** → **Bullet**
 
 #### Event Sheet:
 
 ```
-Event: System → Every 2 seconds
-Action: System → Create object Motorcycle at (X: -100, Y: choose(200, 400, 600))
-       Motorcycle → Set Bullet Angle to 0
-       Motorcycle → Set Bullet Speed to random(100, 200)
+Event: System → Every 2 seconds               (Setiap 2 detik)
+Action: System → Create object Motorcycle     (Buat motor baru)
+        at (X: -100, Y: choose(200, 400, 600))  (Posisi acak)
+        Motorcycle → Set Bullet Speed to random(100, 200)
 
-// Motor yang keluar layar dihapus
-Event: Motorcycle.X > LayoutWidth + 100
-Action: Motorcycle → Destroy
+Event: Motorcycle.X > LayoutWidth + 100       (Motor keluar layar kanan)
+Action: Motorcycle → Destroy                  (Hapus motor)
 ```
 
 ---
 
-### 🚦 Langkah 4: Palang Pintu / Lampu Merah (Klik untuk Berhenti)
+### 🚦 Langkah 4: Palang Pintu (Klik untuk Buka/Tutup)
 
 1. Buat **Sprite** → `TrafficGate`
-2. Buat **Boolean Variable** di `TrafficGate` → `IsClosed = False`
+2. Buat **Instance Variable**: `IsClosed = False`
 
 #### Event Sheet:
 
 ```
-Event: Mouse → On click on TrafficGate
-       TrafficGate → IsClosed = False
-Action: TrafficGate → Set IsClosed to True
-       TrafficGate → Set animation to "closed"
+Event: Mouse → On click on TrafficGate        (Klik palang)
+       TrafficGate → IsClosed = False         (Saat terbuka)
+Action: TrafficGate → Set IsClosed to True    (Tutup palang)
+        TrafficGate → Set animation to "closed"
        
-Event: Mouse → On click on TrafficGate
-       TrafficGate → IsClosed = True
-Action: TrafficGate → Set IsClosed to False
-       TrafficGate → Set animation to "open"
+Event: Mouse → On click on TrafficGate        (Klik palang)
+       TrafficGate → IsClosed = True          (Saat tertutup)
+Action: TrafficGate → Set IsClosed to False   (Buka palang)
+        TrafficGate → Set animation to "open"
 
-// Motor berhenti saat palang tertutup
-Event: Motorcycle → Is overlapping TrafficGate
-       TrafficGate → IsClosed = True
-Action: Motorcycle → Set Bullet Speed to 0
+Event: Motorcycle → Is overlapping TrafficGate  (Motor di palang)
+       TrafficGate → IsClosed = True            (Palang tertutup)
+Action: Motorcycle → Set Bullet Speed to 0      (Motor berhenti)
 
-// Motor jalan lagi saat palang terbuka
-Event: Motorcycle → Is overlapping TrafficGate
-       TrafficGate → IsClosed = False
-Action: Motorcycle → Set Bullet Speed to 150
+Event: Motorcycle → Is overlapping TrafficGate  (Motor di palang)
+       TrafficGate → IsClosed = False           (Palang terbuka)
+Action: Motorcycle → Set Bullet Speed to 150    (Motor jalan lagi)
 ```
 
 ---
 
-### 💥 Langkah 5: Collision (Tabrakan = Game Over)
+### 💥 Langkah 5: Tabrakan = Game Over
 
 #### Event Sheet:
 
 ```
-Event: Bus → On collision with Motorcycle
-Action: System → Restart layout
-       Audio → Play "crash_sound"
-       Text → Set text to "TABRAKAN! Skor: " & Score
+Event: Bus → On collision with Motorcycle     (Bus nabrak motor)
+Action: System → Restart layout               (Mulai ulang)
+        Audio → Play "crash_sound"            (Suara tabrakan)
+        Text → Set text to "TABRAKAN!"
 ```
 
 ---
 
-## 🚀 IMPROVEMENT CHALLENGE - Tingkat Lanjut
+## 🚀 TANTANGAN TAMBAHAN - Tingkat Lanjut
 
-### 🚏 Challenge 1: Sistem Penumpang di Halte
+### 🚏 Tantangan 1: Halte Bus
 
 **Tujuan:** Bus harus berhenti 3 detik di halte untuk menaikkan penumpang!
 
-#### Langkah:
-
 1. Buat **Sprite** → `BusStop`
-2. Buat **Instance Variable** di `Bus` → `IsAtStop = False`
+2. Buat **Instance Variable** di Bus: `IsAtStop = False`
 
 #### Event Sheet:
 
 ```
-Event: Bus → Is overlapping BusStop
-       Bus → IsAtStop = False
+Event: Bus → Is overlapping BusStop           (Bus di halte)
+       Bus → IsAtStop = False                 (Belum berhenti)
 Action: Bus → Set IsAtStop to True
-       Bus → Set Bullet Speed to 0
-       System → Wait 3 seconds
-       Bus → Set Bullet Speed to 150
-       Bus → Set IsAtStop to False
-       System → Add 10 to Score
-       Text → Set text to "Penumpang Naik! +10"
+        Bus → Set Bullet Speed to 0           (Berhenti)
+        System → Wait 3 seconds               (Tunggu 3 detik)
+        Bus → Set Bullet Speed to 150         (Jalan lagi)
+        Bus → Set IsAtStop to False
+        System → Add 10 to Score
+        Text → Set text to "Penumpang Naik! +10"
 ```
 
 ---
 
-### 🌧️ Challenge 2: Hujan = Melambat
+### 🌧️ Tantangan 2: Efek Hujan
 
 **Tujuan:** Saat hujan, semua kendaraan melambat!
 
-#### Langkah:
-
-1. Buat **Particle** untuk efek hujan
-2. Buat **Global Variable** → `IsRaining = False`
+1. Buat **Particles** untuk efek hujan
+2. Buat **Global Variable**: `IsRaining = False`
 
 #### Event Sheet:
 
 ```
-Event: System → Every 15 seconds
-Action: System → Toggle IsRaining
+Event: System → Every 15 seconds              (Setiap 15 detik)
+Action: System → Toggle IsRaining             (Ganti status hujan)
        
-Event: System → IsRaining = True
-Action: Bus → Set Bullet Speed to 100
-       Motorcycle → Set Bullet Speed to 80
-       Particles → Set visible
+Event: System → IsRaining = True              (Saat hujan)
+Action: Bus → Set Bullet Speed to 100         (Bus melambat)
+        Motorcycle → Set Bullet Speed to 80   (Motor melambat)
+        Particles → Set visible               (Tampilkan hujan)
        
-Event: System → IsRaining = False
-Action: Bus → Set Bullet Speed to 150
-       Motorcycle → Set Bullet Speed to 150
-       Particles → Set invisible
+Event: System → IsRaining = False             (Saat tidak hujan)
+Action: Bus → Set Bullet Speed to 150         (Kembali normal)
+        Motorcycle → Set Bullet Speed to 150
+        Particles → Set invisible             (Sembunyikan hujan)
 ```
 
 ---
 
-### 🚔 Challenge 3: Tilang Elektronik
+### 🚔 Tantangan 3: Tilang Elektronik
 
 **Tujuan:** Klik motor yang masuk jalur busway untuk tilang!
 
-#### Langkah:
-
-1. Buat **Zone** deteksi jalur busway (invisible sprite)
+1. Buat **Sprite** → `BuswayZone` (zona jalur busway, invisible)
 
 #### Event Sheet:
 
 ```
-Event: Motorcycle → Is overlapping BuswayZone
-       Mouse → On click on Motorcycle
-Action: Motorcycle → Destroy
-       System → Add 5 to SecurityScore
-       Audio → Play "ticket_sound"
-       Text → Set text to "E-Tilang! +5 Keamanan"
+Event: Motorcycle → Is overlapping BuswayZone   (Motor di jalur busway)
+       Mouse → On click on Motorcycle           (Diklik)
+Action: Motorcycle → Destroy                    (Hapus motor)
+        System → Add 5 to Score
+        Audio → Play "ticket_sound"
+        Text → Set text to "E-Tilang! +5"
 ```
+
 
 ---
 
 ## ☀️ Misi 3: Energi Surya Pelosok Desa
 
-**Genre:** Puzzle / Physics  
-**Konteks:** Elektrifikasi desa 3T dengan panel surya  
+**Jenis Game:** Puzzle (teka-teki)  
+**Tema:** Listrik untuk desa terpencil dengan panel surya  
 **Tujuan:** Putar cermin agar cahaya matahari mengenai panel surya!
 
-<!-- ![Preview Game](./Assets/Misi-3-Solar/preview.png) -->
-
 ---
 
-### 🛠️ Langkah 1: Setup Layout
+### 🛠️ Langkah 1: Buat Layout
 
-1. **Background**: Pemandangan desa (rumah tanpa listrik)
+1. Gambar latar: Pemandangan desa (rumah tanpa listrik)
 2. Buat **Sprite** → `Sun` (matahari di kiri atas)
 3. Buat **Sprite** → `Mirror` (cermin yang bisa diputar)
-4. Buat **Sprite** → `SolarPanel` (target akhir)
-5. Buat **Sprite** → `House` (rumah dengan animasi lampu mati/nyala)
+4. Buat **Sprite** → `SolarPanel` (target)
+5. Buat **Sprite** → `House` (dengan 2 animasi: lampu mati & nyala)
 
 ---
 
-### 💡 Langkah 2: Simulasi Cahaya dengan Line of Sight
-
-#### Metode Sederhana: Menggunakan Bullet + Raycast
+### 💡 Langkah 2: Membuat Sinar Cahaya
 
 1. Buat **Sprite** kecil → `LightRay` (titik cahaya)
+2. Tambah **Behavior** → **Bullet**
 
 #### Event Sheet:
 
 ```
-Event: System → Every 0.1 seconds
-Action: System → Create object LightRay at Sun (ImagePoint "RayOrigin")
-       LightRay → Set Bullet Speed to 500
-       LightRay → Set Bullet Angle to 0  // Arah kanan
+Event: System → Every 0.1 seconds             (Setiap 0.1 detik)
+Action: System → Create object LightRay at Sun  (Buat sinar dari matahari)
+        LightRay → Set Bullet Speed to 500      (Kecepatan tinggi)
+        LightRay → Set Bullet Angle to 0        (Arah ke kanan)
 ```
 
 ---
 
 ### 🪞 Langkah 3: Cermin yang Bisa Diputar
 
-1. Pilih `Mirror` → Add **Drag & Drop** Behavior (opsional)
-2. Buat **Instance Variable** di `Mirror` → `Rotation = 0`
+1. Pilih `Mirror` → Tambah **Behavior** → **Drag & Drop** (opsional)
 
 #### Event Sheet:
 
 ```
-Event: Mouse → On click on Mirror
-Action: Mirror → Rotate 45 degrees clockwise
+Event: Mouse → On click on Mirror             (Klik cermin)
+Action: Mirror → Rotate 45 degrees clockwise  (Putar 45 derajat)
 
-// Atau dengan keyboard
-Event: Keyboard → On R pressed
-       Mouse cursor → Is over Mirror
+// Alternatif: pakai keyboard
+Event: Keyboard → On R pressed                (Tekan tombol R)
+       Mouse cursor → Is over Mirror          (Mouse di atas cermin)
 Action: Mirror → Rotate 45 degrees
 ```
 
 ---
 
-### 🔆 Langkah 4: Pemantulan Cahaya
+### 🔆 Langkah 4: Pantulan Cahaya
 
 #### Event Sheet:
 
 ```
-Event: LightRay → On collision with Mirror
-Action: LightRay → Set Bullet Angle to Mirror.Angle + 90  // Pantulkan
+Event: LightRay → On collision with Mirror    (Sinar kena cermin)
+Action: LightRay → Set Bullet Angle to Mirror.Angle + 90  (Dipantulkan)
        
-// Jika cahaya mengenai panel
-Event: LightRay → On collision with SolarPanel
-Action: LightRay → Destroy
-       SolarPanel → Set animation to "active"
-       House → Set animation to "lights_on"
-       System → Add 100 to Score
-       Text → Set text to "Panel Aktif! Listrik Menyala!"
+Event: LightRay → On collision with SolarPanel  (Sinar kena panel)
+Action: LightRay → Destroy                      (Hapus sinar)
+        SolarPanel → Set animation to "active"  (Panel aktif)
+        House → Set animation to "lights_on"    (Lampu nyala)
+        System → Add 100 to Score
+        Text → Set text to "Panel Aktif! Listrik Menyala!"
 ```
 
 ---
 
-### 🎯 Langkah 5: Win Condition
+### 🎯 Langkah 5: Kondisi Menang
+
+Buat **Global Variable**: `HousesPowered = 0` dan `TotalHouses = 3`
 
 #### Event Sheet:
 
 ```
-// Buat Global Variable: HousesPowered = 0, TotalHouses = 3
+Event: SolarPanel → Animation "active" is playing  (Panel sudah aktif)
+       SolarPanel → IsPowered = False              (Belum dihitung)
+Action: System → Add 1 to HousesPowered            (Tambah penghitung)
+        SolarPanel → Set IsPowered to True         (Tandai sudah dihitung)
 
-Event: SolarPanel → Animation "active" is playing
-       SolarPanel → Variable IsPowered = False
-Action: System → Add 1 to HousesPowered
-       SolarPanel → Set IsPowered to True
-
-Event: System → HousesPowered = TotalHouses
+Event: System → HousesPowered = TotalHouses        (Semua rumah terang)
 Action: System → Go to layout "WinScreen"
-       Text → Set text to "Semua Rumah Teraliri Listrik!"
+        Text → Set text to "Semua Rumah Teraliri Listrik!"
 ```
 
 ---
 
-## 🚀 IMPROVEMENT CHALLENGE - Tingkat Lanjut
+## 🚀 TANTANGAN TAMBAHAN - Tingkat Lanjut
 
-### ☁️ Challenge 1: Awan Bergerak Menghalangi
+### ☁️ Tantangan 1: Awan Menghalangi
 
 **Tujuan:** Simpan energi di baterai saat ada matahari, pakai saat berawan!
 
-#### Langkah:
-
 1. Buat **Sprite** → `Cloud` (bergerak horizontal)
-2. Buat **Global Variable** → `BatteryCharge = 0` (max 100)
+2. Buat **Global Variable**: `BatteryCharge = 0` (max 100)
 
 #### Event Sheet:
 
 ```
-Event: Cloud → Is overlapping Sun
-Action: Sun → Set Variable "IsBlocked" to True
-       
-Event: Sun → IsBlocked = False
-       LightRay → On collision with SolarPanel
-Action: System → Add 10 to BatteryCharge (capped at 100)
-       Text → Set text to "Baterai: " & BatteryCharge & "%"
+Event: Cloud → Is overlapping Sun             (Awan menutupi matahari)
+Action: Sun → Set IsBlocked to True           (Matahari terhalang)
 
-Event: Sun → IsBlocked = True
-       System → Every 1 second
-Action: System → Subtract 5 from BatteryCharge
+Event: Sun → IsBlocked = False                (Matahari tidak terhalang)
+       LightRay → On collision with SolarPanel
+Action: System → Add 10 to BatteryCharge      (Isi baterai)
+        Text → Set text to "Baterai: " & BatteryCharge & "%"
+
+Event: Sun → IsBlocked = True                 (Matahari terhalang)
+       System → Every 1 second                (Setiap detik)
+Action: System → Subtract 5 from BatteryCharge  (Baterai berkurang)
        
-Event: BatteryCharge <= 0
-Action: House → Set animation to "lights_off"
-       Text → Set text to "Baterai Habis!"
+Event: BatteryCharge <= 0                     (Baterai habis)
+Action: House → Set animation to "lights_off" (Lampu mati)
+        Text → Set text to "Baterai Habis!"
 ```
 
 ---
 
-### 🔢 Challenge 2: Batas Cermin (Resource Management)
+### 🔢 Tantangan 2: Batas Cermin
 
 **Tujuan:** Gunakan maksimal 5 cermin untuk menyalakan semua rumah!
+
+Buat **Global Variable**: `MirrorsUsed = 0` dan `MaxMirrors = 5`
 
 #### Event Sheet:
 
 ```
-// Global Variable: MirrorsUsed = 0, MaxMirrors = 5
-
 Event: System → On start of layout
 Action: Text → Set text to "Cermin Tersisa: " & (MaxMirrors - MirrorsUsed)
 
-Event: Mouse → On click (layout)
-       System → MirrorsUsed < MaxMirrors
+Event: Mouse → On click (layout)              (Klik di layar)
+       System → MirrorsUsed < MaxMirrors      (Cermin masih ada)
 Action: System → Create object Mirror at Mouse.X, Mouse.Y
-       System → Add 1 to MirrorsUsed
+        System → Add 1 to MirrorsUsed
 
-Event: System → MirrorsUsed >= MaxMirrors
+Event: System → MirrorsUsed >= MaxMirrors     (Cermin habis)
 Action: Text → Set text to "Cermin Habis! Atur Posisi dengan Bijak!"
 ```
 
 ---
 
-### 🗺️ Challenge 3: Level Design - Peta Indonesia
+### 🗺️ Tantangan 3: Level Berbeda - Peta Indonesia
 
 **Tujuan:** Setiap pulau = level berbeda dengan tantangan unik!
 
-#### Struktur:
+1. **Level Papua**: Banyak gunung, cermin harus lebih tinggi
+2. **Level Jakarta**: Gedung tinggi menghalangi, butuh banyak pantulan
+3. **Level Kalimantan**: Hutan lebat, awan sering lewat
 
-1. **Layout 1**: Papua (banyak gunung, cermin harus lebih tinggi)
-2. **Layout 2**: Jakarta (gedung tinggi menghalangi, butuh banyak pantulan)
-3. **Layout 3**: Kalimantan (hutan lebat, awan sering lewat)
-
-#### Event Sheet (Global):
-
-```
-Event: System → On start of layout
-Action: System → Go to layout "LevelSelect"
-       
-// Di layout LevelSelect, buat Button untuk setiap pulau
-Event: Mouse → On click on ButtonPapua
-Action: System → Go to layout "Level_Papua"
-```
 
 ---
 
 ## 📚 Panduan Umum Construct 2
 
-### 🎨 Behaviors yang Sering Digunakan
+### 🎨 Behavior yang Sering Digunakan
 
 | Behavior | Fungsi | Digunakan di |
 |----------|--------|--------------|
-| **Platformer** | Karakter bisa lompat & jalan | Misi 1 |
-| **Bullet** | Objek bergerak otomatis | Misi 1, 2, 3 |
+| **Platform** | Karakter bisa jalan & lompat | Misi 1 |
+| **Bullet** | Objek bergerak otomatis lurus | Misi 1, 2, 3 |
 | **Solid** | Objek tidak bisa ditembus | Semua Misi |
-| **Drag & Drop** | Objek bisa digeser mouse | Misi 3 |
+| **Drag & Drop** | Objek bisa digeser pakai mouse | Misi 3 |
 | **Pin** | Objek menempel ke objek lain | Misi 1 (NPC) |
+| **Anchor** | Objek tetap di posisi layar | Misi 1 (UI) |
 
 ---
 
-## 🔧 Tips Debugging
+## 🔧 Tips Mencari Kesalahan (Debugging)
 
-1. **Gunakan Text Object** untuk debug variabel:
+1. **Tampilkan nilai variable** untuk cek apakah benar:
    ```
-   Text → Set text to "Player X: " & Player.X & " Y: " & Player.Y
+   Text → Set text to "Score: " & Score
    ```
 
-2. **Browser Console** (F12) untuk lihat error
+2. **Tekan F12** di browser untuk lihat pesan error di Console
 
-3. **Preview Mode**: Tekan F5 untuk test langsung di browser
+3. **Tekan F5** untuk preview/test game langsung di browser
 
-4. **Debug Mode**: Buka Layout → Preview → Debug untuk lihat variabel real-time
+4. **Debug Mode**: Layout → Preview → Debug untuk lihat semua variable secara real-time
 
 ---
 
-## 📝 Catatan
+## 📝 Catatan Penting
 
 - **Target:** Siswa SMP Kelas 8-9 / SMA
-- **Software:** Construct 2 (Desktop)
-- Setiap misi punya **Base Case** (dasar) dan **Improvement Challenge** (pengembangan)
-- Dorong siswa untuk **eksplorasi behaviors** dan **event sheets** sendiri
+- **Software:** Construct 2 (Desktop) atau Construct 3 (Online)
+- Setiap misi punya **Dasar** dan **Tantangan Tambahan**
+- Jangan takut bereksperimen dengan behavior dan event sheet!
 
 ---
 
-## 🔗 Referensi & Link
+## 🔗 Link Berguna
 
-- [Construct 2 Official](https://www.scirra.com/construct2)
-- [Construct 2 Manual](https://www.scirra.com/manual)
-- [Construct 2 Tutorials](https://www.scirra.com/tutorials)
-- [Free Assets](https://opengameart.org/)
-- [Kenney Assets](https://kenney.nl/)
+| Link | Keterangan |
+|------|------------|
+| [Construct 2 Official](https://www.scirra.com/construct2) | Download software |
+| [Construct 3 Online](https://editor.construct.net/) | Versi online (gratis terbatas) |
+| [Construct Manual](https://www.construct.net/en/make-games/manuals/construct-3) | Panduan lengkap |
+| [Kenney Assets](https://kenney.nl/) | Gambar game gratis |
+| [OpenGameArt](https://opengameart.org/) | Asset game gratis |
+| [Freesound](https://freesound.org/) | Efek suara gratis |
 
 ---
 
-## 🎯 Tantangan Tambahan
+## 🎯 Tantangan Ekstra
 
-| Misi | Tantangan Ekstra |
-|------|------------------|
+| Misi | Tantangan |
+|------|-----------|
 | Misi 1 | Buat sistem **stamina** (pemain tidak bisa lompat terus-menerus) |
-| Misi 2 | Tambahkan **TransJakarta Koridor** berbeda dengan rute berbeda |
-| Misi 3 | Buat **Day/Night Cycle** (panel hanya aktif saat siang) |
+| Misi 2 | Tambahkan **koridor TransJakarta** berbeda dengan rute berbeda |
+| Misi 3 | Buat **siang/malam** (panel hanya aktif saat siang) |
 
 ---
 
 ## 🏆 Kriteria Penilaian Hackathon
 
-| Aspek | Bobot | Kriteria |
-|-------|-------|----------|
-| **Fungsionalitas** | 40% | Game berjalan tanpa bug, semua fitur base case berfungsi |
-| **Kreativitas** | 30% | Implementasi improvement challenge, visual menarik |
-| **Problem Solving** | 20% | Logika event sheet efisien, penggunaan behaviors tepat |
-| **Konteks Indonesia** | 10% | Kesesuaian tema dengan realitas Indonesia |
+| Aspek | Bobot | Penjelasan |
+|-------|-------|------------|
+| **Fungsionalitas** | 40% | Game berjalan tanpa error, semua fitur dasar bekerja |
+| **Kreativitas** | 30% | Menambah tantangan tambahan, tampilan menarik |
+| **Problem Solving** | 20% | Event sheet rapi dan efisien |
+| **Konteks Indonesia** | 10% | Sesuai dengan konteks/tema Indonesia |
 
 ---
 

@@ -6,6 +6,14 @@ Kumpulan tutorial membuat game sederhana dengan tema lingkungan menggunakan Scra
 
 ---
 
+## 📋 Cheat Sheet
+
+Bingung dengan blok-blok Scratch? Pakai cheat sheet ini aja!
+
+👉 **[Buka Cheat Sheet Scratch](https://docs.google.com/spreadsheets/d/1NqdYrbG9VKvDrrg8JA7r3VzbRfJ23HXrBRyyHl649rs/edit?gid=0#gid=0)**
+
+---
+
 ## 🌊 Misi 1: Siaga Banjir (Evakuasi Kampung)
 
 **Genre:** Endless Runner  

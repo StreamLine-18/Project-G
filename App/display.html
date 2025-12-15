@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="display.css">
 </head>
+
 <body>
     <div class="display-container">
         <header>
             <h1>🎮 One-Day Hackathon</h1>
-            <p style="color: var(--accent-yellow, #ffc107); font-size: 1.5rem; margin-bottom: 20px;">Build It. Level Up. Own the Stage!</p>
+            <p style="color: var(--accent-yellow, #ffc107); font-size: 1.5rem; margin-bottom: 20px;">Build It. Level Up.
+                Own the Stage!</p>
             <div class="timer-display">
                 <div class="timer" id="timer">03:00:00</div>
                 <div class="timer-status" id="timerStatus">⏸ PAUSED</div>
@@ -20,15 +23,30 @@
 
         <main>
             <section class="leaderboard">
-                <h2>🏆 Leaderboard</h2>
-                <div class="leaderboard-table">
-                    <div class="table-header">
-                        <span class="rank">Rank</span>
-                        <span class="name">Tim</span>
-                        <span class="mission">Misi</span>
-                        <span class="score">Skor</span>
+                <div class="leaderboard-grid">
+                    <div class="category-column">
+                        <h2 class="category-title">Beginner</h2>
+                        <div class="leaderboard-table">
+                            <div class="table-header">
+                                <span class="rank">#</span>
+                                <span class="name">Tim</span>
+                                <span class="score">Skor</span>
+                            </div>
+                            <div id="beginnerBody"></div>
+                        </div>
                     </div>
-                    <div id="leaderboardBody"></div>
+
+                    <div class="category-column">
+                        <h2 class="category-title">Intermediate</h2>
+                        <div class="leaderboard-table">
+                            <div class="table-header">
+                                <span class="rank">#</span>
+                                <span class="name">Tim</span>
+                                <span class="score">Skor</span>
+                            </div>
+                            <div id="intermediateBody"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -37,4 +55,5 @@
     <script src="shared.js"></script>
     <script src="display.js"></script>
 </body>
+
 </html>
