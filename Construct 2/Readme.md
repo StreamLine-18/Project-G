@@ -22,7 +22,7 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
 ---
 
-## �️ Misi 1: Petualangan Hutan Kalimantan
+## 🌲 Misi 1: Petualangan Hutan Kalimantan
 
 **Jenis Game:** Platformer (lompat-lompatan)  
 **Tema:** Menjelajahi hutan dan menghindari kebakaran  
@@ -34,24 +34,25 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
 1. Buka **Construct 2** dan klik **New Project**
 
-![new-project-menu](./Assets/screenshots/new-project.png)
+![new-project-menu](./secret/screenshots/new-project.png)
 
 2. Atur ukuran layar (**Layout Size**): **1280 x 720**
    - Klik pada **Layout 1** di panel Projects (kanan)
    - Lihat panel **Properties** (kiri), cari **Layout Size**
 
-![layout-size-properties](./Assets/screenshots/layout-size.png)
+![layout-size-properties](./secret/screenshots/layout-size.png)
 
-   > *Viewport (Ukuran Layar) tidak harus seperti di gambar, kamu bebas menentukan viewportmu sendiri*
+   > *Catatan: Viewport (ukuran layar) tidak harus sama persis seperti di gambar. Kamu bebas menentukan ukuran sesuai kebutuhan.*
 
 3. Tambahkan gambar latar belakang (hutan/forest)
 4. Buat **Layer** baru untuk tampilan skor dan timer
    - Klik tab **Layers** di panel kanan
    - Klik icon **+** untuk tambah layer baru
 
-![layers-panel](./Assets/screenshots/layers-panel.png)
+![layers-panel](./secret/screenshots/layers-panel.png)
 
-   > *Catatan: Kamu bisa pakai layout untuk memisahkan background dengan file utama kamu*
+   > *Catatan: Kamu bisa menggunakan layer terpisah untuk memisahkan background dengan objek game utama.*
+
 ---
 
 ### 🎮 Langkah 2: Membuat Karakter Pemain
@@ -60,57 +61,67 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
 1. Klik kanan di Layout → **Insert New Object** → pilih **Sprite** → beri nama `Player`
 
-![insert-new-object](./Assets/screenshots/insert-new-object.png)
-   > *Catatan: Setelah kamu memilih Sprite, klik kiri pada layout dan Image Editor akan terbuka*
+![insert-new-object](./secret/screenshots/insert-new-object.png)
+
+   > *Catatan: Setelah memilih Sprite, klik di area layout untuk menempatkannya. Image Editor akan terbuka otomatis.*
 
 2. Gambar karakter atau masukkan gambar dari file (klik folder icon di Image Editor)
 
-![image-editor](./Assets/screenshots/image-editor.png)
+![image-editor](./secret/screenshots/image-editor.png)
 
-jika gambar kamu animasi, kamu bisa mengikuti gambar di bawah ini
+**Jika gambar kamu berupa sprite sheet (animasi):**
 
-![Animated](./Assets/screenshots/Animated1.png)
-Klik kanan pada bagian bawah kemudian pilih From sheet
+![Animated](./secret/screenshots/Animated1.png)
 
-![Animated](./Assets/screenshots/Animated2.png)
-Ubah kolom sesuai jumlah animasi kemudian pilih add all frame
-Kamu 
+1. Klik kanan pada panel frame (bagian bawah) → pilih **Import frames → From sprite strip**
+
+![Animated](./secret/screenshots/Animated2.png)
+
+2. Atur jumlah kolom sesuai sprite sheet, lalu klik **Add all frames**
+
+   > *Tips: Kamu juga bisa menambahkan animasi lain seperti "Run", "Walk", "Jump", dll dengan cara yang sama.*
 
 
 3. Klik kanan pada `Player` di Layout → **Behaviors** → **Add** → pilih **Platform**
 
-![add-behavior](./Assets/screenshots/add-behavior.png)
+![add-behavior](./secret/screenshots/add-behavior.png)
 
-   > *Behavior "Platform" membuat karakter bisa jalan dan lompat otomatis*
+   > *Behavior "Platform" membuat karakter bisa jalan dan lompat otomatis, Tambahkan Juga Behavior "Scroll-To" agar kamera mengikuti Pemain*
 
 #### B. Buat Tanah dengan Tilemap
 
 1. **Insert New Object** → **Tilemap** → beri nama `Ground`
 
-![select-tilemap](./Assets/screenshots/select-tilemap.png)
-![select-tilemap1](./Assets/screenshots/select-tilemap1.png)
+![select-tilemap](./secret/screenshots/select-tilemap.png)
+![select-tilemap1](./secret/screenshots/select-tilemap1.png)
 
 2. Double-click Tilemap untuk buka **Tilemap Editor**
 3. Load tileset gambar (klik folder icon) - gunakan tileset tanah/rumput
 4. Gambar platform dengan klik dan drag di layout
-![tilemap-editor](./Assets/screenshots/tilemap-editor.png)
-   > *Catatan: Setelah tilemap berhasil di import, kamu dapat mulai membuat rintangan dengan memilih platform yang telah tersedia*
-   
-   ![tile-editor](./Assets/screenshots/tile-editor.png)
-   
-   > *Catatan: Kamu harus mengatur Collison tiap tile agar sesuai dengan gambar, dengan cara double Click di tiap tile. "karena panjang persegi 32px maka untuk mencari nilai tengahnya kamu cukup memasukan separuh nilai persegi yaitu 16*
+![tilemap-editor](./secret/screenshots/tilemap-editor.png)
+
+   > *Catatan: Setelah tileset berhasil di-import, kamu bisa mulai menggambar level dengan memilih tile yang tersedia.*
+
+![tile-editor](./secret/screenshots/tile-editor.png)
+
+   > *Penting: Atur collision setiap tile agar sesuai dengan bentuk gambar. Double-click pada tile untuk mengedit collision polygon. Contoh: jika tile berukuran 32x32 px, titik tengahnya adalah (16, 16).*
 
 
 
 
 5. Klik kanan pada `Ground` → **Behaviors** → **Add** → pilih **Solid**
-![tilemap-behavior](./Assets/screenshots/tilemap-behavior.png)
-   > *Behavior "Solid" membuat objek tidak bisa ditembus, kamu juga bisa menggunakan Behavior "Jump-Thru".*
+![tilemap-behavior](./secret/screenshots/tilemap-behavior.png)
+
+   > *Behavior "Solid" membuat objek tidak bisa ditembus. Alternatif: gunakan "Jump-thru" jika ingin pemain bisa lompat menembus platform dari bawah.*
+
+   > *Tips: Tekan F5 untuk test game dan cek apakah platform sudah berfungsi dengan benar.*
 
 #### C. Buat Pos Aman (Garis Finish)
 
 1. **Insert New Object** → **Sprite** → beri nama `SafeZone`
 2. Letakkan di ujung kanan layout
+
+   > *Tips: Kamu bisa menggunakan asset checkpoint yang ada di folder Asset.*
 
 ---
 
@@ -125,11 +136,11 @@ Kamu
 
 Buka **Event Sheet 1** (double-click di panel Projects)
 
-![open-event-sheet](./Assets/screenshots/open-event-sheet.png)
+![open-event-sheet](./secret/screenshots/open-event-sheet.png)
 
 Klik kanan di area kosong → **Add event** untuk menambah event baru
 
-![add-event](./Assets/screenshots/add-event.png)
+![add-event](./secret/screenshots/add-event.png)
 
 ```
 Event: System → On start of layout          (Saat game dimulai)
@@ -195,7 +206,7 @@ Action: System → Restart layout
 2. Buat **Global Variable** → `WaterCollected = 0`
    - Klik kanan di **Event Sheet** → **Add global variable**
 
-![add-global-variable](./Assets/screenshots/add-global-variable.png)
+![add-global-variable](./secret/screenshots/add-global-variable.png)
 
 3. Buat **Global Variable** → `TotalWater = 5`
 
@@ -226,7 +237,7 @@ Action: Text → Set text to "Kumpulkan semua air dulu!"
 2. Buat **Instance Variable** di Orangutan: `IsRescued = False`
    - Klik pada Orangutan → di panel **Properties** (kiri) → klik **Instance variables** → **Add**
 
-![instance-variable](./Assets/screenshots/instance-variable.png)
+![instance-variable](./secret/screenshots/instance-variable.png)
 
 #### Event Sheet:
 
