@@ -42,6 +42,8 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
 ![layout-size-properties](./Assets/screenshots/layout-size.png)
 
+   > *Viewport (Ukuran Layar) tidak harus seperti di gambar, kamu bebas menentukan viewportmu sendiri*
+
 3. Tambahkan gambar latar belakang (hutan/forest)
 4. Buat **Layer** baru untuk tampilan skor dan timer
    - Klik tab **Layers** di panel kanan
@@ -49,6 +51,7 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
 ![layers-panel](./Assets/screenshots/layers-panel.png)
 
+   > *Catatan: Kamu bisa pakai layout untuk memisahkan background dengan file utama kamu*
 ---
 
 ### 🎮 Langkah 2: Membuat Karakter Pemain
@@ -58,18 +61,25 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 1. Klik kanan di Layout → **Insert New Object** → pilih **Sprite** → beri nama `Player`
 
 ![insert-new-object](./Assets/screenshots/insert-new-object.png)
-
-![select-sprite](./Assets/screenshots/select-sprite.png)
+   > *Catatan: Setelah kamu memilih Sprite, klik kiri pada layout dan Image Editor akan terbuka*
 
 2. Gambar karakter atau masukkan gambar dari file (klik folder icon di Image Editor)
 
 ![image-editor](./Assets/screenshots/image-editor.png)
 
+jika gambar kamu animasi, kamu bisa mengikuti gambar di bawah ini
+
+![Animated](./Assets/screenshots/Animated1.png)
+Klik kanan pada bagian bawah kemudian pilih From sheet
+
+![Animated](./Assets/screenshots/Animated2.png)
+Ubah kolom sesuai jumlah animasi kemudian pilih add all frame
+Kamu 
+
+
 3. Klik kanan pada `Player` di Layout → **Behaviors** → **Add** → pilih **Platform**
 
 ![add-behavior](./Assets/screenshots/add-behavior.png)
-
-![select-platform-behavior](./Assets/screenshots/select-platform-behavior.png)
 
    > *Behavior "Platform" membuat karakter bisa jalan dan lompat otomatis*
 
@@ -78,15 +88,24 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 1. **Insert New Object** → **Tilemap** → beri nama `Ground`
 
 ![select-tilemap](./Assets/screenshots/select-tilemap.png)
+![select-tilemap1](./Assets/screenshots/select-tilemap1.png)
 
 2. Double-click Tilemap untuk buka **Tilemap Editor**
 3. Load tileset gambar (klik folder icon) - gunakan tileset tanah/rumput
 4. Gambar platform dengan klik dan drag di layout
-
 ![tilemap-editor](./Assets/screenshots/tilemap-editor.png)
+   > *Catatan: Setelah tilemap berhasil di import, kamu dapat mulai membuat rintangan dengan memilih platform yang telah tersedia*
+   
+   ![tile-editor](./Assets/screenshots/tile-editor.png)
+   
+   > *Catatan: Kamu harus mengatur Collison tiap tile agar sesuai dengan gambar, dengan cara double Click di tiap tile. "karena panjang persegi 32px maka untuk mencari nilai tengahnya kamu cukup memasukan separuh nilai persegi yaitu 16*
+
+
+
 
 5. Klik kanan pada `Ground` → **Behaviors** → **Add** → pilih **Solid**
-   > *Behavior "Solid" membuat objek tidak bisa ditembus*
+![tilemap-behavior](./Assets/screenshots/tilemap-behavior.png)
+   > *Behavior "Solid" membuat objek tidak bisa ditembus, kamu juga bisa menggunakan Behavior "Jump-Thru".*
 
 #### C. Buat Pos Aman (Garis Finish)
 
