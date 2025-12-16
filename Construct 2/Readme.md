@@ -1,8 +1,8 @@
 # 🎮 One-Day Hackathon: Build It. Level Up. Own the Stage!
 
-## Tutorial Game Construct 2 - Edukasi Lingkungan
+## Tutorial Game Construct 2 - Edukasi Lingkungan (Platformer)
 
-Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia menggunakan Construct 2.
+Panduan singkat membuat game dengan tema lingkungan dan konteks Indonesia menggunakan Construct 2.
 
 ---
 
@@ -22,11 +22,12 @@ Kumpulan tutorial membuat game dengan tema lingkungan dan konteks Indonesia meng
 
 ---
 
-## 🌲 Misi 1: Petualangan Hutan Kalimantan
+## 🌲 Setup Awal
 
 **Jenis Game:** Platformer (lompat-lompatan)  
 **Tema:** Menjelajahi hutan dan menghindari kebakaran  
 **Tujuan:** Karakter harus sampai ke pos aman sebelum terjebak api hutan!
+**LInk Construct 3:** https://editor.construct.net/?startTour
 
 ---
 

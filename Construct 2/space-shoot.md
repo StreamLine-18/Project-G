@@ -1,9 +1,25 @@
-# 🚀 Space Shooter - Cheat Sheet Tutorial
+# 🎮 One-Day Hackathon: Build It. Level Up. Own the Stage!
 
 ## Tutorial Game Construct 3 - Space Shooter
 
 Panduan singkat membuat game tembak-tembakan pesawat luar angkasa menggunakan Construct 3.
--
+---
+
+## 📖 Daftar Istilah
+
+| Istilah | Arti |
+|---------|------|
+| **Sprite** | Gambar/objek yang bisa bergerak di game |
+| **Tilemap** | Objek untuk menggambar level dari tile/kotak-kotak kecil |
+| **Layout** | Halaman atau layar game (seperti level) |
+| **Behavior** | Perilaku otomatis yang ditambahkan ke objek |
+| **Event Sheet** | Tempat menulis logika/aturan game |
+| **Event** | Kondisi/kejadian yang memicu aksi |
+| **Action** | Aksi yang dilakukan saat event terjadi |
+| **Variable** | Tempat menyimpan angka atau teks (seperti skor) |
+| **Collision** | Saat dua objek bertabrakan/bersentuhan |
+
+---
 
 ## 🎮 Setup Awal
 
@@ -11,6 +27,7 @@ Panduan singkat membuat game tembak-tembakan pesawat luar angkasa menggunakan Co
 
 1. Buka **Construct 2** dan klik **New Project**
 2. Atur ukuran layar (**Layout Size**): **768 x 480** atau sesuai kebutuhan
+3. **LInk Construct 3:** https://editor.construct.net/?startTour
 
 ![setup-awal](./secret/space-shot/1.png)
 
