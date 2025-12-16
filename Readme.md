@@ -10,8 +10,8 @@ Repository ini berisi materi pembelajaran untuk membuat game bertema lingkungan 
 
 | Level | Platform | Folder | Target Peserta |
 |-------|----------|--------|----------------|
-| 🟢 **Beginner** | Scratch | [📂 Scratch/](./Scratch/) | SD Kelas 4-6 / SMP |
-| 🟡 **Intermediate** | Construct 2/3 | [📂 Construct 2/](./Construct%202/) | SMP / SMA |
+| 🟢 **Beginner** | Scratch | [📂 Scratch/](./Scratch/) | Kelas 7 |
+| 🟡 **Intermediate** | Construct 2/3 | [📂 Construct 2/](./Construct%202/) | Kelas 8 dan Kelas 9 |
 
 ---
 
