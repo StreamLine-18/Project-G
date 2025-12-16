@@ -13,7 +13,7 @@ Selamat datang di hackathon! Pilih salah satu tema game di bawah ini untuk mulai
 | 🌲 [**Platformer**](./Platformer.md) | Lompat-lompatan | ⭐⭐ Menengah | Petualangan hutan, hindari api, selamatkan orangutan! |
 | 🚀 [**Space Shooter**](./space-shoot.md) | Tembak-tembakan | ⭐ Pemula | Pesawat luar angkasa, tembak musuh, bertahan hidup! |
 
-## Aset Bisa Di Download Di : s.uad.id/1DH 
+## Aset Bisa Di Download Di : https://s.uad.id/1DH
 ---
 
 ## 🌲 Tema 1: Platformer - Petualangan Hutan
