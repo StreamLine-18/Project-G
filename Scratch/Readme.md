@@ -163,22 +163,25 @@ end
 
 Masukan kode ini di **Sprite Api**:
 
-> **Logika:** Muncul di posisi acak, tunggu, lalu pindah lagi.
+> **Logika:** Muncul di posisi acak, tunggu, lalu pindah lagi. Gunakan variable untuk cek apakah api sudah dipadamkan.
 
 ```
 when green flag clicked                    (Saat bendera hijau diklik)
 forever                                    (Selamanya)
+    set [Dipadamkan] to 0                  (Reset status: 0 = belum dipadamkan)
     go to x: (pick random -200 to 200) y: (pick random -150 to 150)
                                            (Pergi ke posisi acak)
     show                                   (Tampilkan sprite)
     wait 2 seconds                         (Tunggu 2 detik)
-    if <visible?> then                     (Jika masih terlihat/belum diklik)
+    if <[Dipadamkan] = 0> then             (Jika belum dipadamkan)
         change [Nyawa] by -1               (Kurangi nyawa)
     end
     hide                                   (Sembunyikan sprite)
     wait 1 seconds                         (Tunggu 1 detik)
 end
 ```
+
+> 💡 **Buat variable `Dipadamkan` khusus untuk sprite ini:** Klik "Make a Variable" → pilih **"For this sprite only"**
 
 ---
 
